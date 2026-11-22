@@ -1,14 +1,38 @@
-# Halcyon
+# Halcyon Player
 
 A generative note player for the Teenage Engineering OP–XY, built with the
 unofficial [Open-XY SDK](https://github.com/etcetc000/open-xy). Hold a key and
 the track's own instrument wanders in a scale of its own, from the key you hold.
 After Mutable Instruments' Marbles.
 
-Halcyon is [Halcyon Wander](https://github.com/colorsinspace1/halcyon-wander)
+Halcyon Player is [Halcyon Wander](https://github.com/colorsinspace1/halcyon-wander)
 by Colors In Space with the synth taken out: the same line (Rate, Chance,
 Deja vu, Length, Spread, Jitter, the same eight scales), now sent as notes to
-whatever instrument the track plays, stock or SDK.
+whatever instrument the track plays, stock or SDK. On the OP–XY it is called
+**halcyon**.
+
+## See it
+
+On today's SDK (the `main` branch), the page is built from the player page's 24 dots:
+
+[![Halcyon Player on the 24-dot page: the marble jumps from note to note](media/dot-page.gif)](media/dot-page.mp4)
+
+With its own drawn page (the `drawn-page` branch, which needs SDK 1.22, still a
+[pull request](https://github.com/etcetc000/open-xy/pull/578)), the marble glides
+to each note, trails its last moves and the halo swells, as in Halcyon Wander:
+
+[![Halcyon Player's own drawn page: the marble glides between notes](media/drawn-page.gif)](media/drawn-page.mp4)
+
+Tap either for the video with sound. Next to the original:
+
+![Halcyon Wander's screen, Halcyon Player's drawn page and its 24-dot page](media/compare.png)
+
+[Gate, heard](media/gate.mp4): the same line four times, at 10 %, 50 %, 100 % and tie.
+
+These are drawn from the player's own code on a computer, not filmed on an OP–XY,
+and the sound is a plain test tone standing in for the track's instrument.
+
+## Controls
 
 | Page 1 | |
 | --- | --- |
