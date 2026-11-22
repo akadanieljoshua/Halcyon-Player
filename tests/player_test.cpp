@@ -1,4 +1,4 @@
-// Wander Player's own checks, compiled for the host and run by
+// Halcyon's own checks, compiled for the host and run by
 // python sdk.py test --machine <folder>.
 #include "harness.hpp"
 #include <cstring>

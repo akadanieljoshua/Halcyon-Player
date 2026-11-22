@@ -1,4 +1,4 @@
-// Wander Player: Halcyon Wander's line as a note player. Hold a key and the
+// Halcyon: Halcyon Wander's line as a note player. Hold a key and the
 // track's own instrument plays a line that wanders in a scale of its own, from
 // the key you hold, after Mutable Instruments' Marbles. By Colors In Space.
 //
@@ -18,7 +18,7 @@
 // no division, no allocation.
 #include <opxy/player.hpp>
 
-namespace wander_player {
+namespace halcyon_player {
 using opxy::i32;
 using opxy::u8;
 using opxy::u16;
@@ -489,4 +489,4 @@ void display(const State& s, const Controls& c, Display& d) {
     for (u32 r = 0; r < 4; ++r)
         if (r != ring) d.lit |= 1u << (kRingMasks + r);
 }
-}  // namespace wander_player
+}  // namespace halcyon_player

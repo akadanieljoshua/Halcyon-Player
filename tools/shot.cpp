@@ -1,4 +1,4 @@
-// Prints Wander Player's page for a few moments as JSON, for tools/screens.py.
+// Prints Halcyon's page for a few moments as JSON, for tools/screens.py.
 // g++ -std=c++11 -I ../open-xy/sdk/include tools/shot.cpp -o shot
 // The header is the SDK's own (opxy/page_header.hpp), as the player page draws it.
 #include "../tests/harness.hpp"

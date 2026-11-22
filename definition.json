@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "id": "wander_player",
-  "name": "Wander Player",
+  "id": "halcyon_player",
+  "name": "Halcyon",
   "press": "page",
   "parameters": [
     {

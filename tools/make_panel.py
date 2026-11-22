@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Writes Wander Player's page artwork, panel.svg.fragment: Halcyon Wander's
+"""Writes Halcyon's page artwork, panel.svg.fragment: Halcyon Wander's
 orrery, as near as the SDK's player page allows. python tools/make_panel.py
 
 Halcyon Wander draws its own screen; a note player gets the SDK's player page,
@@ -25,7 +25,7 @@ the outside, across a zero-width slit and back round the inside.
 import math, pathlib, random
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-P = "wander_player"
+P = "halcyon_player"
 FONT = 'font-family="UniversNextPro-Light"'
 CX, CY = 240, 130
 RINGS = [(68, 30), (106, 45), (144, 60), (182, 75)]       # rx, ry per octave, as Halcyon Wander
@@ -165,7 +165,7 @@ for _ in range(70):
         continue
     out.append(f'<circle cx="{f(x)}" cy="{f(y)}" r="{radius}" fill="{fill}" stroke="none" stroke-width="0"/>')
 
-# The player page's line of text, which Wander Player leaves empty.
+# The player page's line of text, which Halcyon leaves empty.
 # The player page's line of text: "hold" while Hold is on, otherwise empty.
 out.append(f'<text id="{P}_text" transform="matrix(1 0 0 1 240 214)" fill="#8C8C8C" {FONT} font-size="12"></text>')
 out.append('</g>')

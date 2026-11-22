@@ -1,11 +1,11 @@
-# Wander Player
+# Halcyon
 
 A generative note player for the Teenage Engineering OP–XY, built with the
 unofficial [Open-XY SDK](https://github.com/etcetc000/open-xy). Hold a key and
 the track's own instrument wanders in a scale of its own, from the key you hold.
 After Mutable Instruments' Marbles.
 
-Wander Player is [Halcyon Wander](https://github.com/colorsinspace1/halcyon-wander)
+Halcyon is [Halcyon Wander](https://github.com/colorsinspace1/halcyon-wander)
 by Colors In Space with the synth taken out: the same line (Rate, Chance,
 Deja vu, Length, Spread, Jitter, the same eight scales), now sent as notes to
 whatever instrument the track plays, stock or SDK.

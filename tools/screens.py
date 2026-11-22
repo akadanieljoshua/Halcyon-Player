@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draws Wander Player's page for review from tools/shot.cpp's frames: the
+"""Draws Halcyon's page for review from tools/shot.cpp's frames: the
 artwork with its dots shown or hidden as the SDK's player page does
 (screen_player.hpp), under the SDK's two-page header (its template, posed by opxy/page_header.hpp).
 Not the device's renderer.
@@ -7,7 +7,7 @@ python tools/screens.py <shot binary> <out folder>   (writes page-<n>.svg)"""
 import html, json, pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-P = 'wander_player'
+P = 'halcyon_player'
 ART = (ROOT / 'panel.svg.fragment').read_text()
 
 
