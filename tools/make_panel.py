@@ -16,11 +16,12 @@ geometry, greys and star field, and the dots carry what changes:
   dot 23      the halo, swelled as a note sounds
 
 A marble at pitch class s on ring r is spoke s % 4, with the other groups' and
-other rings' masks shown. The masks sit under the sun, ring lines, places and
-stars, so they never cut them; the lit places are drawn as rings without a fill,
-in the marble's own grey, so that over the marble they vanish into it. Shapes
-that must hide or show without relying on a fill rule are single polygons: a ring
-runs round the outside, across a zero-width slit and back round the inside.
+other rings' masks shown. The masks sit under the sun, ring lines, lit places and
+stars, so they never cut them; the faint unlit places sit under the marble, to
+keep it solid. The lit places are drawn as rings without a fill, in the marble's
+own grey, so that over the marble they vanish into it. Shapes that must hide or
+show without relying on a fill rule are single polygons: a ring runs round the
+outside, across a zero-width slit and back round the inside.
 """
 import math, pathlib, random
 
@@ -87,8 +88,16 @@ def mask(r, s):
                     for k in range(24)])
 
 
-# --- The marble, under everything but the stars' gaps: spokes 11..14, then the masks
-# that leave one of their places.
+# Every place that a scale may leave unlit, as Halcyon Wander's dim places (the root
+# and the fifth are in every scale). Under the marble, so that it stays solid; the
+# masks hide them while a marble shows, which at their faint grey barely shows.
+for ring in range(4):
+    for s in range(12):
+        if s not in (0, 7):
+            x, y = place(ring, s)
+            out.append(f'<circle cx="{f(CX + x)}" cy="{f(CY + y)}" r="1.6" fill="#000000" stroke="#2E2E2E" stroke-width="0.3"/>')
+
+# --- The marble: spokes 11..14, then the masks that leave one of their places.
 for b in range(4):
     d = " ".join(disc(*place(r, s), 5, 16) for r in range(4) for s in range(b, 12, 4))
     dot(11 + b, d, "#E6E6E6", "#E6E6E6", "0.5")
@@ -129,14 +138,6 @@ for ring, (rx, ry) in enumerate(RINGS):
         runs.append(run)
     d = " ".join("M" + " L".join(f"{f(x)},{f(y)}" for x, y in r) for r in runs)
     out.append(f'<path transform="matrix(1 0 0 1 {CX} {CY})" d="{d}" fill="none" stroke="#5A5A5A" stroke-width="0.6"/>')
-
-# Every place that a scale may leave unlit, as Halcyon Wander's dim places (the root
-# and the fifth are in every scale).
-for ring in range(4):
-    for s in range(12):
-        if s not in (0, 7):
-            x, y = place(ring, s)
-            out.append(f'<circle cx="{f(CX + x)}" cy="{f(CY + y)}" r="1.6" fill="none" stroke="#2E2E2E" stroke-width="0.3"/>')
 
 # --- Dots 0..7: each scale's lit places on every ring, as Halcyon Wander's lit place
 # (radius 3.2, a stroke of 1): a ring from 2.7 to 3.7.
