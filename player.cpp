@@ -59,8 +59,6 @@ const u8 kScaleNotes[kScales][7] = {
     {0, 3, 5, 7, 10, 0, 0},   // minor pentatonic (five notes)
 };
 const char kScaleShort[kScales][6] = {"min", "dor", "harm", "phry", "lyd", "maj", "Mpen", "mpen"};
-const char kScaleNames[kScales][17] = {"minor", "dorian", "harmonic minor", "phrygian",
-                                       "lydian", "major", "major pentatonic", "minor pentatonic"};
 
 struct Params {
     u32 interval;   // player steps per line step
@@ -89,6 +87,9 @@ inline Params read_params(const Controls& c) {
     return p;
 }
 
+// Hold: the shift row's one entry, Shift + encoder 1 (definition.json "shift").
+inline bool hold_on(const Controls& c) { return opxy::player::choice(c.shift_value[0], 2) == 1; }
+
 // --- The line (Halcyon Wander's journey.h, one per held key) ------------------------
 inline u32 hash(u32 x) {
     x ^= x >> 16; x *= 0x7feb352du; x ^= x >> 15; x *= 0x846ca68bu; x ^= x >> 16;
@@ -115,8 +116,19 @@ struct Key {
 struct State {
     Key keys[kKeys];
     u32 rng, order_counter, rearm;
+    // The page's clock: player steps, counted whether or not a key is held.
+    u32 ticks;
+    u32 sounded;        // when the shown line's last note sounded, for the halo
+    u32 released;       // when the last key was let go, for the marble's second
     u8 active, sounding, off_mask, on_mask;
-    u8 draining, drain_calls, event_pending, pad;
+    u8 draining, drain_calls, event_pending;
+    u8 fading;          // the last key's marble, still shown for a second
+    u8 fade_semitone;   // where it was
+    u8 held;            // keys under a finger (or a sequenced note); active keys not held are latched by Hold
+    u8 stop_count;      // latched roots waiting to be silenced
+    u8 stopping[kKeys];
+    u8 hold;            // Hold as last read on the sequencer, for release(), which gets no Controls
+    u8 pad;
 };
 
 struct Step { bool sounds; u32 degree; u32 gain; };   // degree 0 is the held key; gain Q15
@@ -199,6 +211,14 @@ inline void park(Tone& tone, u32 root) {
     tone.delay = kParkedDelay;
 }
 
+// The held key the page follows: the oldest, as Halcyon Wander's screen followed the first.
+inline u32 shown_key(const State& s) {
+    u32 shown = kKeys;
+    for (u32 i = 0; i < kKeys; ++i)
+        if ((s.active >> i & 1) && (shown == kKeys || s.keys[i].order < s.keys[shown].order)) shown = i;
+    return shown;
+}
+
 inline void queue_note(State& s, u32 i, u32 semitone, u32 gain, const Params& p) {
     Key& k = s.keys[i];
     const u8 bit = static_cast<u8>(1u << i);
@@ -207,12 +227,38 @@ inline void queue_note(State& s, u32 i, u32 semitone, u32 gain, const Params& p)
     k.semitone = static_cast<u8>(semitone);
     k.shown = 1;
     k.gate = gate_steps(p);
+    if (shown_key(s) == i) s.sounded = s.ticks;
     s.on_mask |= bit;
     s.off_mask &= static_cast<u8>(~bit);   // its Replace already ends the old note
 }
 
+// Ends a latched key's line: its slot is free at once, and the next drain sends its
+// root an empty Replace, which silences it and clears stock's record.
+inline void stop_key(State& s, u32 i) {
+    const u8 keep = static_cast<u8>(~(1u << i));
+    bool queued = false;
+    for (u32 n = 0; n < s.stop_count; ++n) queued = queued || s.stopping[n] == s.keys[i].root;
+    if (!queued && s.stop_count < kKeys) s.stopping[s.stop_count++] = s.keys[i].root;
+    s.active &= keep;
+    s.sounding &= keep;
+    s.off_mask &= keep;
+    s.on_mask &= keep;
+    s.held &= keep;
+    if (!s.active) {                      // the marble stays a second, as Halcyon Wander's did
+        s.fading = s.keys[i].shown;
+        s.fade_semitone = s.keys[i].semitone;
+        s.released = s.ticks;
+    }
+}
+
 // One player step for every held key: gates close, due steps land.
 inline void clock_step(State& s, const Controls& c) {
+    ++s.ticks;
+    if (!s.active) return;
+    // Hold turned off: what no finger holds stops.
+    if (!hold_on(c) && (s.active & ~s.held))
+        for (u32 i = 0; i < kKeys; ++i)
+            if ((s.active >> i & 1) && !(s.held >> i & 1)) stop_key(s, i);
     if (!s.active) return;
     const Params p = read_params(c);
     if (++s.rearm >= kRearmInterval) {
@@ -238,9 +284,22 @@ bool press(State& s, const Controls& c, u32 note, u32 velocity, Plan& plan) {
     plan.count = 0;
     if (note > 127) return false;
     s.event_pending = 1;
+    s.hold = hold_on(c);
+    // With Hold on, the first key pressed after letting go of every key replaces the
+    // latched lines, as an arpeggiator's latch does.
+    if (hold_on(c) && !s.held && s.active)
+        for (u32 n = 0; n < kKeys; ++n)
+            if ((s.active >> n & 1) && s.keys[n].root != note) stop_key(s, n);
+    // A root pressed again before its stop was sent keeps its new line.
+    for (u32 n = 0; n < s.stop_count; ++n)
+        if (s.stopping[n] == note) s.stopping[n] = s.stopping[--s.stop_count];
     u32 i = find_key(s, note);
     if (i == kKeys) {
-        if (s.active == 0xff) return true;   // the SDK cannot hold a ninth root: a silent key
+        // Stock holds eight roots, counting latched ones whose stop is still to be sent:
+        // a ninth would be dropped, so it is a silent key.
+        u32 records = s.stop_count;
+        for (u32 n = 0; n < kKeys; ++n) records += s.active >> n & 1;
+        if (records >= kKeys) return true;
         i = lowest_bit(static_cast<u8>(~s.active));
     }
     const u8 bit = static_cast<u8>(1u << i);
@@ -258,7 +317,12 @@ bool press(State& s, const Controls& c, u32 note, u32 velocity, Plan& plan) {
     k.semitone = 0;
     k.shown = 1;
     k.gate = gate_steps(p);
+    if (!s.active) {
+        s.sounded = s.ticks + 1;          // the first key, whose note sounds on the next step
+        s.fading = 0;
+    }
     s.active |= bit;
+    s.held |= bit;
     s.sounding |= bit;                    // the plan sounds it on the next step
     s.off_mask &= static_cast<u8>(~bit);
     s.on_mask &= static_cast<u8>(~bit);
@@ -274,27 +338,41 @@ bool release(State& s, u32 note) {
     const u32 i = find_key(s, note);
     if (i == kKeys) return true;          // a key press() could not hold
     const u8 keep = static_cast<u8>(~(1u << i));
+    s.held &= keep;
+    // With Hold on, the line plays on: stock keeps the root's record. Hold is as
+    // last read, at most a player step ago; if it has since gone off, the next
+    // step stops this key.
+    if (s.hold) return true;
     s.active &= keep;
     s.sounding &= keep;
     s.off_mask &= keep;
     s.on_mask &= keep;
+    if (!s.active) {                      // the marble stays a second, as Halcyon Wander's did
+        s.fading = s.keys[i].shown;
+        s.fade_semitone = s.keys[i].semitone;
+        s.released = s.ticks;
+    }
     return false;                         // stock releases this root's notes
 }
 
 bool update(State& s, const Controls& c, Update& change) {
+    s.hold = hold_on(c);
     if (!s.draining) {
         s.draining = 1;
         s.drain_calls = 0;
         if (s.event_pending) s.event_pending = 0;
         else clock_step(s, c);
     }
-    if (!s.off_mask && !s.on_mask) {
+    if (!s.stop_count && !s.off_mask && !s.on_mask) {
         s.draining = 0;
         return false;
     }
     change.mode = opxy::player::Replace;
     change.plan.count = 1;
-    if (s.off_mask) {
+    if (s.stop_count) {
+        change.root = s.stopping[--s.stop_count];
+        change.plan.count = 0;            // an empty Replace ends the root
+    } else if (s.off_mask) {
         const u32 i = lowest_bit(s.off_mask);
         const u8 bit = static_cast<u8>(1u << i);
         s.off_mask &= static_cast<u8>(~bit);
@@ -317,9 +395,10 @@ bool update(State& s, const Controls& c, Update& change) {
 
 // Stock reset and all-notes-off: stock has already silenced every record.
 void reset(State& s) {
-    const u32 rng = s.rng;
+    const u32 rng = s.rng, ticks = s.ticks;
     __builtin_memset(&s, 0, sizeof s);
     s.rng = rng;
+    s.ticks = ticks;
 }
 
 // --- The page ------------------------------------------------------------------------
@@ -353,44 +432,61 @@ inline void show_number(char (&out)[8], u32 value, const char* suffix) {
 
 inline u32 percent(u32 q15) { return (q15 * 100u + 16384u) >> 15; }
 
-// The page is an orrery, after Halcyon Wander's screen: twelve places around the
-// held key, the root at the top. Dots 0..11 light the scale's notes; dots 12..23
-// are the marble, landing on each note as it sounds. The line in the middle names
-// the note, or the scale while nothing is held; the keyboard below shows the
-// notes in every octave as they sound.
+// Player steps in tenths of a second at the current tempo (120 BPM when unknown).
+inline u32 tenths(const Controls& c, u32 count) {
+    const u32 bpm_x10 = c.bpm_x10 ? c.bpm_x10 : 1200u;
+    return (bpm_x10 * 41u * count) >> 10;   // 240 steps a beat: a tenth of a second is bpm_x10 / 25
+}
+
+// Dot bits, matching tools/make_panel.py.
+const u32 kScaleDots = 0, kCoverDots = 8, kSpokeDots = 11, kGroupMasks = 15, kRingMasks = 18;
+const u32 kSunDot = 22, kHaloDot = 23;
+
+// The page is Halcyon Wander's orrery (tools/make_panel.py): the held key the
+// sun, each ring an octave of Spread, the scale's notes lit at their clock
+// positions, and a marble on each note as it sounds, on its octave's ring.
+// The header carries the values as Halcyon Wander's did: amounts as 0..100.
 void display(const State& s, const Controls& c, Display& d) {
     using opxy::player::choice;
     const Params p = read_params(c);
     show(d.values[0], kRateNames[choice(c.value[0], kRates)]);
-    show_number(d.values[1], choice(c.value[1], kChances) * 5u, "%");
+    show_number(d.values[1], choice(c.value[1], kChances) * 5u, "");
     show(d.values[2], kScaleShort[p.scale]);
     if (p.gate >= kTie) show(d.values[3], "tie");
-    else show_number(d.values[3], (p.gate + 1u) * 10u, "%");
-    show_number(d.values[4], percent(p.dejavu), "%");
+    else show_number(d.values[3], (p.gate + 1u) * 10u, "");
+    show_number(d.values[4], percent(p.dejavu), "");
     show_number(d.values[5], p.length, "");
     show_number(d.values[6], p.octaves, " oct");
-    show_number(d.values[7], percent(p.jitter), "%");
+    show_number(d.values[7], percent(p.jitter), "");
 
-    for (u32 n = 0; n < kScaleSize[p.scale]; ++n) d.lit |= 1u << kScaleNotes[p.scale][n];
-
-    // The oldest held key's line, as Halcyon Wander's screen followed the first key.
-    u32 shown = kKeys;
-    for (u32 i = 0; i < kKeys; ++i)
-        if ((s.active >> i & 1) && (shown == kKeys || s.keys[i].order < s.keys[shown].order)) shown = i;
-    u32 at = 0;
-    if (shown == kKeys || !s.keys[shown].shown) {
-        append(d.text, sizeof d.text, at, kScaleNames[p.scale]);
-        return;
+    if (hold_on(c)) {
+        u32 at = 0;
+        append(d.text, sizeof d.text, at, "hold");
     }
-    static const char notes[12][3] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
-    const Key& k = s.keys[shown];
-    u32 place = k.semitone;
-    while (place >= 12) place -= 12;
-    d.lit |= 1u << (12 + place);
-    u32 pitch = pitch_of(k.root, k.semitone), octave = 0;
-    while (pitch >= 12) { pitch -= 12; ++octave; }
-    append(d.text, sizeof d.text, at, notes[pitch]);
-    if (octave) append_number(d.text, sizeof d.text, at, octave - 1);
-    else append(d.text, sizeof d.text, at, "-1");
+    d.lit = 1u << (kScaleDots + p.scale);
+    for (u32 ring = p.octaves; ring < 4; ++ring) d.lit |= 1u << (kCoverDots + ring - 1);
+
+    const u32 key = shown_key(s);
+    u32 semitone = 0;
+    bool marble = false;
+    if (key != kKeys) {
+        marble = s.keys[key].shown;
+        semitone = s.keys[key].semitone;
+        d.lit |= 1u << kSunDot;
+        if (s.ticks - s.sounded < tenths(c, 1)) d.lit |= 1u << kHaloDot;
+    } else if (s.fading && s.ticks - s.released < tenths(c, 10)) {
+        marble = true;
+        semitone = s.fade_semitone;
+    }
+    if (!marble) return;
+    // A note from a wider Spread sits on the outer ring, as in Halcyon Wander.
+    u32 ring = 0, place = semitone;
+    while (place >= 12) { place -= 12; ++ring; }
+    if (ring >= p.octaves) ring = p.octaves - 1;
+    d.lit |= 1u << (kSpokeDots + (place & 3));
+    for (u32 group = 0; group < 3; ++group)
+        if (group != place >> 2) d.lit |= 1u << (kGroupMasks + group);
+    for (u32 r = 0; r < 4; ++r)
+        if (r != ring) d.lit |= 1u << (kRingMasks + r);
 }
 }  // namespace wander_player

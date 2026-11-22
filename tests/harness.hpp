@@ -24,11 +24,11 @@ struct Host {
     wp::State state;
     player::Controls controls;
     Record records[8];
-    u32 held, now, stale, largest_drain;
+    u32 held, now, stale, dropped, largest_drain;
     int level[128];
     std::vector<Event> events;
 
-    Host() : state(), controls(), records(), held(0), now(0), stale(0), largest_drain(0), level() { defaults(); }
+    Host() : state(), controls(), records(), held(0), now(0), stale(0), dropped(0), largest_drain(0), level() { defaults(); }
 
     // A choice as the SDK stores it: the centre of its bucket.
     void set(u32 control, u32 index, u32 choices) {
@@ -36,6 +36,7 @@ struct Host {
         controls.value[control] = static_cast<i32>(index * width + width / 2);
     }
     void amount(u32 control, double value) { controls.value[control] = static_cast<i32>(value * 2147483647.0); }
+    void hold(bool on) { controls.shift_value[0] = on ? 0x60000000 : 0x20000000; }
     // The definition's defaults: 1/4, 65 %, dorian, 80 %, deja vu 50 %, 8 steps, 2 oct, jitter 25 %.
     void defaults() {
         set(0, 3, 10); set(1, 13, 21); set(2, 1, 8); set(3, 7, 11);
@@ -69,7 +70,10 @@ struct Host {
         if (!r) {
             for (u32 i = 0; i < held && !r; ++i)
                 if (!records[i].count) r = &records[i];
-            if (!r) { require(held < 8); r = &records[held++]; }
+            if (!r) {
+                if (held >= 8) { ++dropped; return; }   // stock drops a ninth root's plan
+                r = &records[held++];
+            }
         }
         r->root = root;
         r->count = plan.count;
@@ -81,7 +85,7 @@ struct Host {
         u32 i = 0;
         for (; i < 8 && wp::update(state, controls, change); ++i) {
             require(change.mode == player::Replace);
-            require(change.plan.count == 1);   // an empty Replace would end the root for good
+            require(change.plan.count <= 1);   // one note, or none: Hold's stop of a latched root
             store(change.root, change.plan, true);
         }
         if (i > largest_drain) largest_drain = i;

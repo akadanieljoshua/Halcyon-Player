@@ -170,6 +170,7 @@ void eight_keys_and_a_ninth() {
     for (u32 n = 0; n < 30 * 100; ++n) { h.step(); require(h.sounding() <= 8); }
     require(h.largest_drain <= 8);
     require(h.release(90));   // nothing of stock's to release
+    require(h.dropped == 0);
     for (u32 k = 0; k < 8; ++k) h.release(40 + 3 * k);
     require(h.sounding() == 0 && h.stale == 0);
 }
@@ -209,21 +210,175 @@ bool terminated(const char* text, u32 size) {
     return false;
 }
 
-void the_page() {
+// Pitches sounding now, from the model's levels.
+std::vector<u32> sounding_pitches(const Host& h) {
+    std::vector<u32> out;
+    for (u32 n = 0; n < 128; ++n) if (h.level[n] > 0) out.push_back(n);
+    return out;
+}
+
+void hold_keeps_lines_playing() {
     Host h;
+    h.set(0, 7, 10); h.set(1, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
+    h.hold(true);
+    h.press(36);
+    h.step(600);
+    require(h.release(36));                // taken: stock keeps the record
+    const size_t before = h.ons().size();
+    h.step(60 * 20);
+    require(h.ons().size() >= before + 19);
+    require(h.sounding() == 1);
+    // A new key after letting go of everything replaces the latched line.
+    h.press(84);
+    h.step(60 * 20);
+    for (u32 p : sounding_pitches(h)) require(p >= 84);
+    std::vector<Event> on = h.ons();
+    for (u32 i = on.size() - 19; i < on.size(); ++i) require(on[i].pitch >= 84 && on[i].pitch < 96);
+    // Keys pressed together are latched together, and replaced together.
+    h.press(48);                            // 84 still held: 48 joins it
+    h.step(300);
+    h.release(84); h.release(48);
+    h.step(60 * 10);
+    require(h.sounding() == 2);
+    h.press(60);
+    h.step(60 * 10);
+    require(h.sounding() == 1);
+    for (u32 p : sounding_pitches(h)) require(p >= 60 && p < 72);
+    require(h.stale == 0 && h.dropped == 0 && h.largest_drain <= 8);
+}
+
+void hold_off_stops_what_no_finger_holds() {
+    Host h;
+    h.set(0, 7, 10); h.set(1, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
+    h.hold(true);
+    h.press(36); h.press(60);
+    h.step(300);
+    h.release(36);                          // latched; 60 still held
+    h.step(300);
+    h.hold(false);
+    h.step(2);
+    require(h.sounding() == 1);
+    for (u32 p : sounding_pitches(h)) require(p >= 60 && p < 72);
+    h.release(60);
+    require(h.sounding() == 0);
+    const size_t before = h.events.size();
+    h.step(1000);
+    require(h.events.size() == before && h.stale == 0);
+    // The page says Hold.
     player::Display d = {};
+    h.hold(true);
     wp::display(h.state, h.controls, d);
-    // Dorian: 0 2 3 5 7 9 10, and no marble while nothing is held.
-    require(d.lit == ((1u << 0) | (1u << 2) | (1u << 3) | (1u << 5) | (1u << 7) | (1u << 9) | (1u << 10)));
-    require(!std::strcmp(d.text, "dorian"));
-    require(!std::strcmp(d.values[0], "1/4") && !std::strcmp(d.values[1], "65%") && !std::strcmp(d.values[2], "dor"));
-    require(!std::strcmp(d.values[3], "80%") && !std::strcmp(d.values[4], "50%") && !std::strcmp(d.values[5], "8"));
-    require(!std::strcmp(d.values[6], "2 oct") && !std::strcmp(d.values[7], "25%"));
-    h.press(62);
-    h.step();
+    require(!std::strcmp(d.text, "hold"));
+    h.hold(false);
     d = player::Display();
     wp::display(h.state, h.controls, d);
-    require(d.lit >> 12 == 1u && !std::strcmp(d.text, "D4"));   // the marble on the root
+    require(d.text[0] == 0);
+}
+
+void hold_eight_then_a_new_chord() {
+    Host h;
+    h.set(0, 9, 10); h.set(1, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
+    h.hold(true);
+    for (u32 k = 0; k < 8; ++k) h.press(30 + 10 * k);
+    h.step(100);
+    for (u32 k = 0; k < 8; ++k) h.release(30 + 10 * k);
+    h.step(100);
+    require(h.sounding() == 8);
+    // Stock still holds eight records when the first new key arrives: it is silent,
+    // the latched lines stop, and the chord's next key starts.
+    h.press(55);
+    h.press(57);
+    h.step(300);
+    require(h.sounding() == 1 && h.dropped == 0 && h.stale == 0);
+    for (u32 p : sounding_pitches(h)) require(p >= 57 && p < 69);
+    h.release(55); h.release(57);
+    h.hold(false);
+    h.step(2);
+    require(h.sounding() == 0);
+}
+
+// The marble places the page shows: a spoke's places, less every place a mask hides
+// (the dots as tools/make_panel.py draws them).
+std::vector<u32> marbles(u32 lit) {
+    std::vector<u32> out;
+    for (u32 r = 0; r < 4; ++r)
+        for (u32 s = 0; s < 12; ++s) {
+            const bool spoke = lit >> (11 + s % 4) & 1;
+            const bool masked = (lit >> (15 + s / 4) & 1) || (lit >> (18 + r) & 1) || (r && (lit >> (7 + r) & 1));
+            if (spoke && !masked) out.push_back(12 * r + s);
+        }
+    return out;
+}
+
+player::Display page(const Host& h) {
+    player::Display d = {};
+    wp::display(h.state, h.controls, d);
+    return d;
+}
+
+void the_page() {
+    Host h;
+    player::Display d = page(h);
+    // Dorian, rings 2 and 3 covered (Spread 2 oct); no sun, halo or marble while nothing is held.
+    require(d.lit == ((1u << 1) | (1u << 9) | (1u << 10)));
+    require(d.text[0] == 0);
+    require(!std::strcmp(d.values[0], "1/4") && !std::strcmp(d.values[1], "65") && !std::strcmp(d.values[2], "dor"));
+    require(!std::strcmp(d.values[3], "80") && !std::strcmp(d.values[4], "50") && !std::strcmp(d.values[5], "8"));
+    require(!std::strcmp(d.values[6], "2 oct") && !std::strcmp(d.values[7], "25"));
+    for (u32 spread = 0; spread < 4; ++spread) {
+        h.set(6, spread, 4);
+        d = page(h);
+        for (u32 ring = 1; ring < 4; ++ring) require((d.lit >> (7 + ring) & 1) == (ring > spread));
+    }
+    for (u32 scale = 0; scale < 8; ++scale) {
+        h.set(2, scale, 8);
+        require((page(h).lit & 0xff) == 1u << scale);
+    }
+    h.defaults();
+
+    // Holding a key: the sun grows, the halo swells as each note sounds, and the
+    // marble sits on the last note's place, on its octave's ring.
+    h.set(0, 7, 10); h.set(1, 20, 21); h.set(6, 3, 4); h.amount(7, 0);
+    h.press(48);
+    u32 halo = 0;
+    for (u32 n = 0; n < 60 * 40; ++n) {
+        h.step();
+        d = page(h);
+        require(d.lit >> 22 & 1);
+        halo += d.lit >> 23 & 1;
+        const std::vector<Event> on = h.ons();
+        const std::vector<u32> shown = marbles(d.lit);
+        require(shown.size() == 1 && shown[0] == on.back().pitch - 48);
+        const u32 since = h.now - 1 - on.back().time;
+        require(((d.lit >> 23) & 1) == (since < 48));   // a tenth of a second at 120 BPM
+    }
+    require(halo > 40 * 40);
+    // A narrower Spread puts a wider note on the outer ring.
+    h.set(6, 0, 4);
+    for (u32 n = 0; n < 60 * 10; ++n) {
+        h.step();
+        const std::vector<u32> shown = marbles(page(h).lit);
+        const u32 semitone = h.ons().back().pitch - 48;
+        require(shown.size() == 1 && shown[0] == semitone % 12);
+    }
+    h.set(6, 3, 4);
+    // Let go: the marble stays a second, then the orrery rests.
+    const u32 last = h.ons().back().pitch - 48;
+    h.release(48);
+    for (u32 n = 0; n < 600; ++n) {
+        d = page(h);
+        require(!(d.lit >> 22 & 1));
+        const std::vector<u32> shown = marbles(d.lit);
+        if (n < 470) require(shown.size() == 1 && shown[0] == last);
+        if (n > 490) require(shown.empty());
+        h.step();
+    }
+    // A chord: the page follows the first key.
+    h.press(50); h.step(7); h.press(62); h.press(55);
+    for (u32 n = 0; n < 60 * 20; ++n) {
+        h.step();
+        require(marbles(page(h).lit).size() == 1);
+    }
     // Every choice of every control formats inside its fixed arrays.
     for (u32 c = 0; c < 8; ++c)
         for (u32 i = 0; i < 32; ++i) {
@@ -231,21 +386,10 @@ void the_page() {
             k.set(c, i, 32);
             k.amount(4, i / 31.0);
             k.amount(7, i / 31.0);
-            d = player::Display();
-            wp::display(k.state, k.controls, d);
+            d = page(k);
             for (u32 v = 0; v < 8; ++v) require(terminated(d.values[v], 8) && d.values[v][0]);
             require(terminated(d.text, 32));
         }
-    h.set(0, 9, 10); h.set(1, 20, 21); h.set(6, 3, 4);
-    for (u32 n = 0; n < 3000; ++n) {
-        h.step();
-        d = player::Display();
-        wp::display(h.state, h.controls, d);
-        u32 marbles = 0;
-        for (u32 b = 12; b < 24; ++b) marbles += d.lit >> b & 1;
-        require(marbles == 1);
-        require(d.lit >> 24 == 0);
-    }
 }
 }
 
@@ -267,6 +411,9 @@ int main() {
     a_long_silence_never_leaks_a_parked_tone();
     high_keys_stay_in_midi();
     reset_clears_held_keys();
+    hold_keeps_lines_playing();
+    hold_off_stops_what_no_finger_holds();
+    hold_eight_then_a_new_chord();
     the_page();
     std::printf("PASS (State %u bytes)\n", static_cast<unsigned>(sizeof(wp::State)));
     return 0;

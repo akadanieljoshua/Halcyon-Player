@@ -163,6 +163,21 @@
       "display": "percent"
     }
   ],
+  "shift": [
+    {
+      "id": "hold",
+      "label": "Hold",
+      "default": 0,
+      "display": "enum",
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "off",
+          "on"
+        ]
+      }
+    }
+  ],
   "presets": {},
   "resources": {}
 }

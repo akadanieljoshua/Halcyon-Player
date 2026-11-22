@@ -24,20 +24,33 @@ whatever instrument the track plays, stock or SDK.
 | **Spread** | how far it roams above the key: 1 to 4 octaves |
 | **Jitter** | loosens the timing: each step lands up to a quarter step early or late |
 
+| Shift + encoder 1 | |
+| --- | --- |
+| **Hold** | off or on. On: lines keep playing after you let go; the next key you press after letting go of everything replaces them, and turning Hold off stops what no finger holds. The page shows "hold" while it is on |
+
 The first note is always the key you hold, at the velocity you played it; the
 notes after it are up to a quarter quieter. Every press starts a new line. Hold
 a chord and each key wanders on a line of its own (up to eight keys). Let go
-and its line stops; the instrument's release carries the last note.
+and its line stops, unless Hold is on; the instrument's release carries the
+last note.
 
 Sequenced notes play it too: a long step (or a held note in a pattern) is a
 held key, so give the sequenced notes the length you want the line to run.
 
-The page is Halcyon Wander's orrery, on the SDK's player page: the key you hold
-at the top of the orbit, the scale's notes lit at their clock positions, and a
-marble landing on each note as it sounds. The middle names the note (or the
-scale while nothing is held), and the keyboard below shows the notes sounding
-in every octave, so Spread shows there. With a chord held, the orrery follows
-the first key.
+The page is Halcyon Wander's orrery, with its geometry, greys and star field:
+the key you hold is the sun, each ring an octave of Spread, the scale's notes
+lit at their clock positions, and a marble landing on each note as it sounds,
+on its octave's ring. The sun grows while a line plays, its halo swells as each
+note sounds, and the marble stays a second after the last key is let go. With
+a chord held, the orrery follows the first key.
+
+A note player can't draw its own screen as a synth does: the SDK's player page
+shows or hides 24 fixed shapes. `tools/make_panel.py` builds the orrery from
+those (scale, Spread, the marble's 48 places, sun and halo); what it can't
+carry is motion. So against Halcyon Wander the marble jumps to each note
+instead of gliding there, it leaves no trail, and the halo swells for a tenth
+of a second instead of easing back. Over the marble, a hair of the ring line
+and the lit place's outline still show.
 
 ## What changed from Halcyon Wander
 
@@ -48,8 +61,12 @@ the first key.
 - Page 1's controls are lists that step one choice per detent: on a player's
   first page the SDK otherwise edits encoder 2 in four steps and encoder 4 as
   off/on.
-- The line stops when the key is let go: a player can't keep a released key
-  sounding.
+- The line stops when the key is let go, unless **Hold** is on (new). Hold is on
+  the player's Shift row, which the SDK doesn't save with the project, so it is
+  off when a project loads. With eight keys latched, the first key of the next
+  chord is silent (stock holds eight roots until the old ones are stopped); the
+  chord's other keys play.
+- The screen: see above.
 
 ## Develop
 
@@ -63,12 +80,14 @@ python ../open-xy/sdk.py test --machine .
 That checks the definition and artwork and runs `tests/player_test.cpp`, a host
 model of stock's chord records around the player (first note, Chance, Deja vu
 loops, Gate and tie, Jitter's window, chords, a ninth key, long silences,
-release and reset, and the page). `python tools/make_panel.py` rewrites the
+release and reset, Hold, and the page's dots, decoded back into the marble's
+place). `python tools/make_panel.py` rewrites the
 artwork; `tools/shot.cpp` and `tools/screens.py` draw the page for review.
 
 Not yet checked on an OP–XY. The SDK reads stock's player step (240 per
 quarter note) from stock's code without timing it on a device, so Rate and
-Gate rest on that.
+Gate rest on that, and the SDK has not yet confirmed on a device that Shift +
+encoder turns reach a player, which Hold needs.
 
 ## Licence
 
