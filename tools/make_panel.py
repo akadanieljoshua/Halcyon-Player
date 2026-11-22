@@ -33,7 +33,7 @@ SCALES = [
     [0, 2, 3, 5, 7, 8, 10], [0, 2, 3, 5, 7, 9, 10], [0, 2, 3, 5, 7, 8, 11], [0, 1, 3, 5, 7, 8, 10],
     [0, 2, 4, 6, 7, 9, 11], [0, 2, 4, 5, 7, 9, 11], [0, 2, 4, 7, 9], [0, 3, 5, 7, 10],
 ]
-MARBLE, MASK = 6.25, 7.6             # the marble's extent with its stroke; a mask's radius
+MARBLE, MASK = 5.25, 6.6             # the marble's extent with its stroke; a mask's radius
 out = [f'<g id="{P}_panel">']
 
 
@@ -90,7 +90,7 @@ def mask(r, s):
 # --- The marble, under everything but the stars' gaps: spokes 11..14, then the masks
 # that leave one of their places.
 for b in range(4):
-    d = " ".join(disc(*place(r, s), 6, 16) for r in range(4) for s in range(b, 12, 4))
+    d = " ".join(disc(*place(r, s), 5, 16) for r in range(4) for s in range(b, 12, 4))
     dot(11 + b, d, "#FFFFFF", "#FFFFFF", "0.5")
 for a in range(3):
     d = " ".join(mask(r, s) for r in range(4) for s in range(4 * a, 4 * a + 4))
@@ -102,11 +102,15 @@ for r in range(4):
 # --- The sun, its halo and the faint circle around it, a little smaller than Halcyon
 # Wander's (as is the marble) so that they stay clear of the inner ring's places; dot 22
 # the sun a quarter larger while a key plays, dot 23 the halo's swell as a note sounds.
-out.append(f'<circle cx="{CX}" cy="{CY}" r="19" fill="none" stroke="#2E2E2E" stroke-width="0.8"/>')
-out.append(f'<circle cx="{CX}" cy="{CY}" r="15" fill="none" stroke="#8C8C8C" stroke-width="1"/>')
-out.append(f'<circle cx="{CX}" cy="{CY}" r="10" fill="#E6E6E6" stroke="#E6E6E6" stroke-width="0.6"/>')
-dot(22, disc(0, 0, 12.5, 40), "#E6E6E6", "#E6E6E6", "0.6")
-dot(23, round_ring(0, 0, 21, 20, 48), "#8C8C8C", "#8C8C8C", "0.1")
+# While a key plays, the halo sits halfway between the grown sun's edge and the faint
+# circle, and the swell (dot 23) lights the faint circle itself, at the same width.
+SUN, SUN_HELD, OUTER = 10, 12.5, 19
+HALO = (SUN_HELD + 0.3 + OUTER - 0.5) / 2         # equal gaps either side of its 1 px stroke
+out.append(f'<circle cx="{CX}" cy="{CY}" r="{OUTER}" fill="none" stroke="#2E2E2E" stroke-width="0.8"/>')
+out.append(f'<circle cx="{CX}" cy="{CY}" r="{f(HALO)}" fill="none" stroke="#8C8C8C" stroke-width="1"/>')
+out.append(f'<circle cx="{CX}" cy="{CY}" r="{SUN}" fill="#E6E6E6" stroke="#E6E6E6" stroke-width="0.6"/>')
+dot(22, disc(0, 0, SUN_HELD, 40), "#E6E6E6", "#E6E6E6", "0.6")
+dot(23, round_ring(0, 0, OUTER + 0.5, OUTER - 0.5, 72), "#8C8C8C", "#8C8C8C", "0.1")
 
 # --- The rings (static, over the masks so that they are never cut): each stops at the
 # lit place's hole, where Halcyon Wander's places covered it.
