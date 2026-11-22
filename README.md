@@ -54,7 +54,7 @@ and the lit place's outline still show.
 
 ## What changed from Halcyon Wander
 
-- **Sound** is gone: the track's instrument makes the sound. Halcyon's fifteen
+- **Sound** is gone: the track's instrument makes the sound. The fifteen Halcyon
   sounds stay in [Halcyon Wander](https://github.com/colorsinspace1/halcyon-wander).
 - **Gate** is new: a synth decided how long its notes rang, a player has to say.
 - **Rate** follows the project tempo in note lengths instead of seconds.
