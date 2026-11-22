@@ -1,7 +1,7 @@
 #pragma once
 // Written by tools/make_panel.py: the artwork's node indices and ring positions.
 #include <opxy/types.hpp>
-namespace wander_player { namespace panel {
+namespace halcyon_player { namespace panel {
 const unsigned bar0 = 0;
 const unsigned ring0 = 8;
 const unsigned halo = 12;

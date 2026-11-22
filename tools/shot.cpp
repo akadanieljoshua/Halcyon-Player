@@ -1,4 +1,4 @@
-// Runs Wander Player and its own page on the host through a short performance at
+// Runs Halcyon and its own page on the host through a short performance at
 // 120 BPM, 30 frames a second, and prints every frame as JSON for tools/screens.py:
 // the page's nodes and texts, a caption, and the notes played.
 // g++ -std=c++11 -O2 -I ../open-xy/sdk/include tools/shot.cpp -o shot

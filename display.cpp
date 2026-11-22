@@ -1,13 +1,13 @@
 #include "display.h"
 #include "panel.h"
 
-// Wander Player's own page (SDK 1.22): Halcyon Wander's orrery, by Colors In
+// Halcyon's own page (SDK 1.22): Halcyon Wander's orrery, by Colors In
 // Space, drawn from the player's State. The held key is the sun; each ring is an
 // octave of Spread; the scale's notes light up at their clock positions. A marble
 // lands on each note as it sounds, its last moves trailing behind, and sets off
 // for the next one 0.15 s before it is due. Compiled after player.cpp, whose
 // State, Params and line it reads.
-namespace wander_player {
+namespace halcyon_player {
 namespace {
 using namespace opxy::draw;
 

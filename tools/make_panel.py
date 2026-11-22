@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Writes Wander Player's own page, panel.svg.fragment, and its indices, panel.h:
+"""Writes Halcyon's own page, panel.svg.fragment, and its indices, panel.h:
 Halcyon Wander's orrery in greys, by Colors In Space, with a line for Hold.
 python tools/make_panel.py"""
 import math, pathlib, random
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-P = "wander_player"
+P = "halcyon_player"
 FONT = 'font-family="UniversNextPro-Light"'
 CX, CY = 240, 130
 RINGS = [(68, 30), (106, 45), (144, 60), (182, 75)]       # rx, ry per octave
@@ -80,7 +80,7 @@ out.append('</g>')
 (ROOT / "panel.svg.fragment").write_text("\n".join(out) + "\n")
 
 h = ["#pragma once", "// Written by tools/make_panel.py: the artwork's node indices and ring positions.",
-     "#include <opxy/types.hpp>", "namespace wander_player { namespace panel {"]
+     "#include <opxy/types.hpp>", "namespace halcyon_player { namespace panel {"]
 for name in ("bar0", "ring0", "halo", "sun", "dot0_0", "ripple0", "trail0", "marble"):
     h.append(f"const unsigned {name} = {nodes[name]};")
 h.append(f"const unsigned node_count = {len(nodes)}, text_count = {len(texts)}, palette_count = {len(palette)};")

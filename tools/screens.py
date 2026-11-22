@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Draws Wander Player's own page from tools/shot.cpp's frames onto its artwork,
+"""Draws Halcyon's own page from tools/shot.cpp's frames onto its artwork,
 for review: python tools/screens.py <shot binary> <out folder> [every]
 writes page-<n>.svg for every n-th frame (default 30, a second apart).
 Not the device's renderer."""
 import html, json, pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-P = 'wander_player'
+P = 'halcyon_player'
 Q = 1024
 ART = (ROOT / 'panel.svg.fragment').read_text()
 PALETTE = re.findall(rf'id="{P}_palette_\d+"[^>]*fill="([^"]+)" stroke="([^"]+)" stroke-width="([^"]+)"', ART)

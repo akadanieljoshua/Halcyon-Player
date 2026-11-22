@@ -1,7 +1,7 @@
 #pragma once
 #include <opxy/page_header.hpp>
 
-namespace wander_player {
+namespace halcyon_player {
 // Matches resources.display in definition.json: paths, points, nodes, texts,
 // palette. tools/make_panel.py writes the artwork (panel.h).
 using Frame = opxy::draw::Frame<0, 0, 70, 17, 9>;

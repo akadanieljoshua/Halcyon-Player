@@ -12,7 +12,7 @@
 
 using opxy::i32;
 using opxy::u32;
-namespace wp = wander_player;
+namespace wp = halcyon_player;
 namespace player = opxy::player;
 
 struct Event { u32 time, pitch, velocity; bool on; };

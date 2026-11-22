@@ -1,6 +1,6 @@
 # Machine development
 
-This repository holds Wander Player (`wander_player`), a note player made from
+This repository holds Halcyon (`halcyon_player`), a note player made from
 Halcyon Wander (`hwander`). The machine is at the repository root.
 Read README.md and use the [Open-XY SDK](https://github.com/etcetc000/open-xy)
 on `staging`, normally checked out beside this repository as `../open-xy`.
