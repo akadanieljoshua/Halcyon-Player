@@ -104,7 +104,7 @@ for r in range(4):
 # the sun a quarter larger while a key plays, dot 23 the halo's swell as a note sounds.
 # While a key plays, the halo sits halfway between the grown sun's edge and the faint
 # circle, and the swell (dot 23) lights the faint circle itself, at the same width.
-SUN, SUN_HELD, OUTER = 10, 12.5, 19
+SUN, SUN_HELD, OUTER = 10, 12.5, 21
 HALO = (SUN_HELD + 0.3 + OUTER - 0.5) / 2         # equal gaps either side of its 1 px stroke
 out.append(f'<circle cx="{CX}" cy="{CY}" r="{OUTER}" fill="none" stroke="#2E2E2E" stroke-width="0.8"/>')
 out.append(f'<circle cx="{CX}" cy="{CY}" r="{f(HALO)}" fill="none" stroke="#8C8C8C" stroke-width="1"/>')
