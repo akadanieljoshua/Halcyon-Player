@@ -33,7 +33,7 @@ SCALES = [
     [0, 2, 3, 5, 7, 8, 10], [0, 2, 3, 5, 7, 9, 10], [0, 2, 3, 5, 7, 8, 11], [0, 1, 3, 5, 7, 8, 10],
     [0, 2, 4, 6, 7, 9, 11], [0, 2, 4, 5, 7, 9, 11], [0, 2, 4, 7, 9], [0, 3, 5, 7, 10],
 ]
-MARBLE, MASK = 7.25, 8.6             # the marble's extent with its stroke; a mask's radius
+MARBLE, MASK = 6.25, 7.6             # the marble's extent with its stroke; a mask's radius
 out = [f'<g id="{P}_panel">']
 
 
@@ -79,10 +79,10 @@ positions = [place(r, s) for r in range(4) for s in range(12)]
 
 
 def mask(r, s):
-    """Covers the marble with a pixel to spare for antialiasing; at the top and bottom,
-    where the next ring's place is 15 px away, it stays short of that ring's marble."""
+    """Covers the marble with a pixel to spare for antialiasing, short of the next ring's
+    marble 15 px away at the top and bottom."""
     x, y = place(r, s)
-    ry = 7.7 if s in (0, 6) else MASK
+    ry = MASK
     return polygon([(x + MASK * math.cos(2 * math.pi * k / 24), y + ry * math.sin(2 * math.pi * k / 24))
                     for k in range(24)])
 
@@ -90,7 +90,7 @@ def mask(r, s):
 # --- The marble, under everything but the stars' gaps: spokes 11..14, then the masks
 # that leave one of their places.
 for b in range(4):
-    d = " ".join(disc(*place(r, s), 7, 16) for r in range(4) for s in range(b, 12, 4))
+    d = " ".join(disc(*place(r, s), 6, 16) for r in range(4) for s in range(b, 12, 4))
     dot(11 + b, d, "#FFFFFF", "#FFFFFF", "0.5")
 for a in range(3):
     d = " ".join(mask(r, s) for r in range(4) for s in range(4 * a, 4 * a + 4))
@@ -99,13 +99,14 @@ for r in range(4):
     d = " ".join(mask(r, s) for s in range(12))
     dot(18 + r, d, "#000000", "#000000", "0.1")
 
-# --- The sun, its halo and the faint circle around it; dot 22 the sun a quarter
-# larger while a key plays, dot 23 the halo's swell as a note sounds.
-out.append(f'<circle cx="{CX}" cy="{CY}" r="22" fill="none" stroke="#2E2E2E" stroke-width="0.8"/>')
-out.append(f'<circle cx="{CX}" cy="{CY}" r="17" fill="none" stroke="#8C8C8C" stroke-width="1"/>')
-out.append(f'<circle cx="{CX}" cy="{CY}" r="11" fill="#E6E6E6" stroke="#E6E6E6" stroke-width="0.6"/>')
-dot(22, disc(0, 0, 13.75, 40), "#E6E6E6", "#E6E6E6", "0.6")
-dot(23, round_ring(0, 0, 22.4, 21.4, 48), "#8C8C8C", "#8C8C8C", "0.1")
+# --- The sun, its halo and the faint circle around it, a little smaller than Halcyon
+# Wander's (as is the marble) so that they stay clear of the inner ring's places; dot 22
+# the sun a quarter larger while a key plays, dot 23 the halo's swell as a note sounds.
+out.append(f'<circle cx="{CX}" cy="{CY}" r="19" fill="none" stroke="#2E2E2E" stroke-width="0.8"/>')
+out.append(f'<circle cx="{CX}" cy="{CY}" r="15" fill="none" stroke="#8C8C8C" stroke-width="1"/>')
+out.append(f'<circle cx="{CX}" cy="{CY}" r="10" fill="#E6E6E6" stroke="#E6E6E6" stroke-width="0.6"/>')
+dot(22, disc(0, 0, 12.5, 40), "#E6E6E6", "#E6E6E6", "0.6")
+dot(23, round_ring(0, 0, 21, 20, 48), "#8C8C8C", "#8C8C8C", "0.1")
 
 # --- The rings (static, over the masks so that they are never cut): each stops at the
 # lit place's hole, where Halcyon Wander's places covered it.
@@ -161,7 +162,7 @@ for _ in range(70):
     x, y = r.uniform(2, 478), r.uniform(42, 218)
     radius, fill = r.choice([0.5, 0.6, 0.8]), r.choice(["#2E2E2E", "#5A5A5A", "#8C8C8C"])
     near = min(math.hypot(x - CX - px, y - CY - py) for px, py in positions)
-    if near < MASK + radius or math.hypot(x - CX, y - CY) < 14.5:
+    if near < MASK + radius or math.hypot(x - CX, y - CY) < 13.5:
         continue
     out.append(f'<circle cx="{f(x)}" cy="{f(y)}" r="{radius}" fill="{fill}" stroke="none" stroke-width="0"/>')
 
