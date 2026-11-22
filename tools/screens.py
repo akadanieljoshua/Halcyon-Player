@@ -1,53 +1,47 @@
 #!/usr/bin/env python3
-"""Draws Wander Player's page for review from tools/shot.cpp's frames: the
-artwork with its dots shown or hidden as the SDK's player page does
-(screen_player.hpp), under the SDK's two-page header (its template, posed by opxy/page_header.hpp).
-Not the device's renderer.
-python tools/screens.py <shot binary> <out folder>   (writes page-<n>.svg)"""
+"""Draws Wander Player's own page from tools/shot.cpp's frames onto its artwork,
+for review: python tools/screens.py <shot binary> <out folder> [every]
+writes page-<n>.svg for every n-th frame (default 30, a second apart).
+Not the device's renderer."""
 import html, json, pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 P = 'wander_player'
-ART = (ROOT / 'panel.svg.fragment').read_text()
-
-
-def pose(art, frame):
-    def dot(m):
-        return m.group(0) if frame['lit'] >> int(m.group(1)) & 1 else ''
-    art = re.sub(rf'<path id="{P}_dot_(\d+)"[^>]*/>', dot, art)
-    # The line of text, centred on x=240 as the SDK centres it.
-    return re.sub(rf'(<text id="{P}_text")([^>]*)></text>',
-                  lambda m: f'{m.group(1)} text-anchor="middle"{m.group(2)}>{html.escape(frame["text"])}</text>', art)
-
-
-HEADER = (ROOT.parent / 'open-xy/sdk/templates/shared/page_header.svg.in')
 Q = 1024
+ART = (ROOT / 'panel.svg.fragment').read_text()
+PALETTE = re.findall(rf'id="{P}_palette_\d+"[^>]*fill="([^"]+)" stroke="([^"]+)" stroke-width="([^"]+)"', ART)
 
 
-def header(frame):
-    """The SDK's two-page header template, posed from opxy/page_header.hpp's frame."""
-    art = HEADER.read_text().replace('@ID@', 'h')
-    for i in range(8):
-        art = art.replace(f'@NODE_{i}@', str(i))
+def apply(frame):
+    art = re.sub(rf'<circle id="{P}_palette[^>]*/>', '', ART)
     def node(m):
-        x, y, scale = frame['nodes'][int(m.group(1))]
-        return re.sub(r'transform="[^"]*"', f'transform="matrix({scale / Q:.4f} 0 0 {scale / Q:.4f} {x / Q:.3f} {y / Q:.3f})"', m.group(0))
-    art = re.sub(r'<path id="h_node_(\d+)"[^>]*/>', node, art)
+        i = int(m.group(2)); tag = m.group(0)
+        x, y, scale, c, s, shade, paint = frame['nodes'][i]
+        matrix = f'matrix({scale*c/Q/Q:.4f} {scale*s/Q/Q:.4f} {-scale*s/Q/Q:.4f} {scale*c/Q/Q:.4f} {x/Q:.3f} {y/Q:.3f})'
+        tag = re.sub(r'transform="[^"]*"', f'transform="{matrix}"', tag)
+        if paint:
+            fill, stroke, width = PALETTE[shade]
+            tag = re.sub(r'stroke="[^"]*"', f'stroke="{stroke}"', tag, count=1)
+            tag = re.sub(r'stroke-width="[^"]*"', f'stroke-width="{width}"', tag)
+            if paint == 2 and 'fill="none"' not in tag:
+                tag = re.sub(r'fill="[^"]*"', f'fill="{fill}"', tag, count=1)
+        return tag
+    art = re.sub(rf'<(path|circle) id="{P}_node_(\d+)"[^>]*/>', node, art)
     def text(m):
-        x, y, scale, chars = frame['texts'][int(m.group(1))]
-        tag = re.sub(r'transform="[^"]*"', f'transform="matrix({scale / Q:.3f} 0 0 {scale / Q:.3f} {x / Q:.3f} {y / Q:.3f})"', m.group(0))
+        i = int(m.group(1)); x, y, scale, chars = frame['texts'][i]
+        tag = re.sub(r'transform="[^"]*"', f'transform="matrix({scale/Q:.3f} 0 0 {scale/Q:.3f} {x/Q:.3f} {y/Q:.3f})"', m.group(0))
         return re.sub(r'>[^<]*</text>', f'>{html.escape(chars)}</text>', tag)
-    art = re.sub(r'<text id="h_text_(\d+)"[^>]*>[^<]*</text>', text, art)
-    return re.sub(r'<!--.*?-->', '', art)
+    art = re.sub(rf'<text id="{P}_text_(\d+)"[^>]*>[^<]*</text>', text, art)
+    art = art.replace('UniversNextPro-Light', 'Helvetica Neue, Arial')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="480" height="220" viewBox="0 0 480 220">'
+            f'<rect width="480" height="220" fill="#000"/>{art}</svg>')
 
 
-frames = json.loads(subprocess.run([sys.argv[1]], capture_output=True, text=True, check=True).stdout)
-folder = pathlib.Path(sys.argv[2])
-folder.mkdir(parents=True, exist_ok=True)
-for n, frame in enumerate(frames, 1):
-    art = pose(ART, frame).replace('UniversNextPro-Light', 'Helvetica, Arial, sans-serif')
-    top = header(frame).replace('UniversNextPro-Light', 'Helvetica, Arial, sans-serif')
-    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="480" height="220" viewBox="0 0 480 220" '
-           f'font-family="Helvetica, Arial, sans-serif"><rect width="480" height="220" fill="#000"/>{top}{art}</svg>')
-    (folder / f'page-{n}.svg').write_text(svg)
-    print(f'page-{n}.svg: {frame["caption"]}')
+if __name__ == '__main__':
+    shot = json.loads(subprocess.run([sys.argv[1]], capture_output=True, text=True, check=True).stdout)
+    folder = pathlib.Path(sys.argv[2])
+    folder.mkdir(parents=True, exist_ok=True)
+    every = int(sys.argv[3]) if len(sys.argv) > 3 else 30
+    for n, frame in enumerate(shot['frames']):
+        if n % every == 0:
+            (folder / f'page-{n:04d}.svg').write_text(apply(frame))

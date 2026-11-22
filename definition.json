@@ -179,5 +179,15 @@
     }
   ],
   "presets": {},
-  "resources": {}
+  "resources": {
+    "display": {
+      "stateBytes": 60,
+      "stateAlignment": 4,
+      "paths": 0,
+      "points": 0,
+      "nodes": 70,
+      "texts": 17,
+      "palette": 9
+    }
+  }
 }
