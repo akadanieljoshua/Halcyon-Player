@@ -17,10 +17,10 @@ geometry, greys and star field, and the dots carry what changes:
 
 A marble at pitch class s on ring r is spoke s % 4, with the other groups' and
 other rings' masks shown. The masks sit under the sun, ring lines, places and
-stars, so they never cut them; the lit places are drawn as rings without a fill
-so that, over the marble, they all but vanish into it. Shapes that must hide
-or show without relying on a fill rule are single polygons: a ring runs round
-the outside, across a zero-width slit and back round the inside.
+stars, so they never cut them; the lit places are drawn as rings without a fill,
+in the marble's own grey, so that over the marble they vanish into it. Shapes
+that must hide or show without relying on a fill rule are single polygons: a ring
+runs round the outside, across a zero-width slit and back round the inside.
 """
 import math, pathlib, random
 
@@ -91,7 +91,7 @@ def mask(r, s):
 # that leave one of their places.
 for b in range(4):
     d = " ".join(disc(*place(r, s), 5, 16) for r in range(4) for s in range(b, 12, 4))
-    dot(11 + b, d, "#FFFFFF", "#FFFFFF", "0.5")
+    dot(11 + b, d, "#E6E6E6", "#E6E6E6", "0.5")
 for a in range(3):
     d = " ".join(mask(r, s) for r in range(4) for s in range(4 * a, 4 * a + 4))
     dot(15 + a, d, "#000000", "#000000", "0.1")
@@ -112,14 +112,14 @@ out.append(f'<circle cx="{CX}" cy="{CY}" r="{SUN}" fill="#E6E6E6" stroke="#E6E6E
 dot(22, disc(0, 0, SUN_HELD, 40), "#E6E6E6", "#E6E6E6", "0.6")
 dot(23, round_ring(0, 0, OUTER + 0.5, OUTER - 0.5, 72), "#8C8C8C", "#8C8C8C", "0.1")
 
-# --- The rings (static, over the masks so that they are never cut): each stops at the
-# lit place's hole, where Halcyon Wander's places covered it.
+# --- The rings (static, over the masks so that they are never cut): each stops just
+# outside a lit place, so that over the marble only its last pixel shows.
 for ring, (rx, ry) in enumerate(RINGS):
     runs, run = [], []
     for k in range(181):
         a = 2 * math.pi * k / 180
         x, y = rx * math.cos(a), ry * math.sin(a)
-        if min(math.hypot(x - px, y - py) for px, py in (place(ring, s) for s in range(12))) < 2.7:
+        if min(math.hypot(x - px, y - py) for px, py in (place(ring, s) for s in range(12))) < 3.9:
             if len(run) > 1:
                 runs.append(run)
             run = []
