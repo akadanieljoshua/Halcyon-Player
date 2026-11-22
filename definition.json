@@ -5,27 +5,6 @@
   "press": "page",
   "parameters": [
     {
-      "id": "rate",
-      "label": "Rate",
-      "default": 0.35,
-      "mapping": {
-        "kind": "enum",
-        "labels": [
-          "2-1",
-          "1-1",
-          "1-2",
-          "1-4",
-          "1-4t",
-          "1-8",
-          "1-8t",
-          "1-16",
-          "1-16t",
-          "1-32"
-        ]
-      },
-      "display": "enum"
-    },
-    {
       "id": "chance",
       "label": "Chance",
       "default": 0.642857,
@@ -75,6 +54,17 @@
         ]
       },
       "display": "enum"
+    },
+    {
+      "id": "rate",
+      "label": "Rate",
+      "default": 0.35,
+      "mapping": {
+        "kind": "linear",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "display": "percent"
     },
     {
       "id": "gate",
@@ -174,6 +164,19 @@
         "labels": [
           "off",
           "on"
+        ]
+      }
+    },
+    {
+      "id": "clock",
+      "label": "Clock",
+      "default": 0,
+      "display": "enum",
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "sync",
+          "free"
         ]
       }
     }

@@ -36,6 +36,24 @@ void number(char* out, u32 capacity, u32 value, const char* suffix) {
     copy(out, capacity, digits);
 }
 
+// Rate: the note length on sync; on free, Halcyon Wander's step in seconds ("4.0s",
+// "250ms").
+inline void rate_caption(char* out, u32 capacity, const opxy::player::Controls& c) {
+    if (!clock_free(c)) {
+        copy(out, capacity, kRateNames[opxy::player::choice(c.value[2], kRates)]);
+        return;
+    }
+    const u32 ms = (free_frames(amount(c.value[2])) * 10u + 220u) / 441u;   // 50..4000
+    if (ms < 1000) { number(out, capacity, ms, "ms"); return; }
+    char text[8] = {};
+    const u32 tenths = (ms + 50u) / 100u;                                    // 10..40
+    text[0] = static_cast<char>('0' + tenths / 10u);
+    text[1] = '.';
+    text[2] = static_cast<char>('0' + tenths % 10u);
+    text[3] = 's';
+    copy(out, capacity, text);
+}
+
 // Player steps in a Q10 time at the current tempo (120 BPM when unknown): 240 a beat.
 i32 steps_in(const opxy::player::Controls& c, i32 q10) {
     const i32 bpm_x10 = c.bpm_x10 ? static_cast<i32>(c.bpm_x10) : 1200;
@@ -55,12 +73,12 @@ inline void display_reset(DisplayState& state) {
 inline void display(DisplayState& state, const State& s, const opxy::player::Controls& c, const Input& input, Frame& frame) {
     const Params p = read_params(c);
 
-    // The header: Rate, Chance, Scale, Gate; page 2 Deja vu, Length, Spread, Jitter.
-    static const char* const titles[8] = {"Rate", "Chance", "Scale", "Gate", "Deja vu", "Length", "Spread", "Jitter"};
+    // The header: Chance, Scale, Rate, Gate; page 2 Deja vu, Length, Spread, Jitter.
+    static const char* const titles[8] = {"Chance", "Scale", "Rate", "Gate", "Deja vu", "Length", "Spread", "Jitter"};
     char values[8][header_capacity] = {};
-    copy(values[0], header_capacity, kRateNames[opxy::player::choice(c.value[0], kRates)]);
-    number(values[1], header_capacity, opxy::player::choice(c.value[1], kChances) * 5u, "");
-    copy(values[2], header_capacity, kScaleShort[p.scale]);
+    number(values[0], header_capacity, opxy::player::choice(c.value[0], kChances) * 5u, "");
+    copy(values[1], header_capacity, kScaleShort[p.scale]);
+    rate_caption(values[2], header_capacity, c);
     if (p.gate >= kTie) copy(values[3], header_capacity, "tie");
     else number(values[3], header_capacity, (p.gate + 1u) * 10u, "");
     header_amount(values[4], header_capacity, c.value[4]);

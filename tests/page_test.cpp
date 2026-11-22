@@ -40,10 +40,19 @@ struct Page {
 void header_scale_and_rings() {
     Page page;
     page.tick();
-    const char* const values[16] = {"", "", "", "", "1/4", "65", "dor", "80", "", "", "", "", "50", "8", "2 oct", "25"};
+    const char* const values[16] = {"", "", "", "", "65", "dor", "1/4", "80", "", "", "", "", "50", "8", "2 oct", "25"};
     for (u32 i = 4; i < 16; ++i)
         if (values[i][0]) require(!std::strcmp(page.frame.texts[i].chars, values[i]));
-    require(!std::strcmp(page.frame.texts[0].chars, "rate") || !std::strcmp(page.frame.texts[0].chars, "Rate"));
+    require(!std::strcmp(page.frame.texts[0].chars, "chance") || !std::strcmp(page.frame.texts[0].chars, "Chance"));
+    // Clock on free: Rate in Halcyon Wander's seconds.
+    page.host.clock_free(true);
+    page.host.amount(2, 0);
+    page.tick();
+    require(!std::strcmp(page.frame.texts[6].chars, "4.0s"));
+    page.host.amount(2, 1.0);
+    page.tick();
+    require(!std::strcmp(page.frame.texts[6].chars, "63ms"));
+    page.host.clock_free(false);
     // Spread 2 octaves: two rings and their places; dorian's notes lit.
     require(!page.hidden(panel::ring0) && !page.hidden(panel::ring0 + 1) && page.hidden(panel::ring0 + 2));
     for (u32 n = 0; n < 12; ++n) {
@@ -61,7 +70,7 @@ void header_scale_and_rings() {
 
 void the_marble_lands_on_each_note_and_glides_to_the_next() {
     Page page;
-    page.host.set(1, 20, 21);          // every step sounds
+    page.host.set(0, 20, 21);          // every step sounds
     page.host.set(6, 3, 4);            // four octaves
     page.host.amount(7, 0);            // on the beat
     page.host.press(48);
@@ -92,14 +101,14 @@ void the_marble_lands_on_each_note_and_glides_to_the_next() {
     // A quarter note is 240 steps, the glide 72 of them: about 9 frames a note.
     require(glided > 6 * (notes - 2) && glided < 10 * notes);
     // The halo settles between notes.
-    page.host.set(1, 0, 21);
+    page.host.set(0, 0, 21);
     page.tick(60);
     require(page.node(panel::halo).scale == unit);
 }
 
 void the_marble_lingers_a_second_after_the_last_key() {
     Page page;
-    page.host.set(1, 20, 21);
+    page.host.set(0, 20, 21);
     page.host.press(60);
     page.tick(100);
     page.host.release(60);
@@ -112,7 +121,7 @@ void the_marble_lingers_a_second_after_the_last_key() {
 
 void a_wider_note_sits_on_the_outer_ring() {
     Page page;
-    page.host.set(1, 20, 21); page.host.set(6, 3, 4); page.host.amount(7, 0);
+    page.host.set(0, 20, 21); page.host.set(6, 3, 4); page.host.amount(7, 0);
     page.host.press(48);
     page.tick(60 * 4);
     page.host.set(6, 0, 4);

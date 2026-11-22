@@ -8,8 +8,8 @@
 int main() {
     Host h;
     h.controls.bpm_x10 = 1200;
-    h.set(0, 5, 10);          // 1/8
-    h.set(1, 15, 21);         // 75 %
+    h.set(2, 5, 10);          // 1/8
+    h.set(0, 15, 21);         // 75 %
     wp::DisplayState state = {};
     wp::Frame frame = {};
     opxy::draw::Input input = {};
@@ -21,7 +21,7 @@ int main() {
     for (u32 n = 0; n < frames; ++n) {
         if (n == 1 * fps) { h.press(57, 100); caption = "holding A3: dorian, 2 octaves"; }
         if (n == 4 * fps) { h.set(6, 3, 4); caption = "Spread turned to 4 octaves"; }
-        if (n == 6 * fps + 15) { h.set(2, 6, 8); caption = "Scale turned to major pentatonic"; }
+        if (n == 6 * fps + 15) { h.set(1, 6, 8); caption = "Scale turned to major pentatonic"; }
         if (n == 8 * fps) { h.hold(true); caption = "Hold on (Shift + encoder 1)"; }
         if (n == 8 * fps + 15) { h.release(57); caption = "Hold on, key let go: it keeps wandering"; }
         if (n == 11 * fps) { h.hold(false); caption = "Hold off: the line stops, the marble lingers"; }
