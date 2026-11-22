@@ -139,7 +139,8 @@ inline void display(DisplayState& state, const State& s, const opxy::player::Con
         place(frame, node, x, y, unit, shade > panel::shade_grey4 ? panel::shade_grey4 : shade, fill_and_stroke);
     }
     // The sun's halo swells for a moment as each note sounds.
-    const i32 swell = state.since < kSwell ? (kSwell - state.since) * 600 / kSwell : 0;
+    // At most 1.4 times: radius 21, clear of a marble on the inner ring's top or bottom place.
+    const i32 swell = state.since < kSwell ? (kSwell - state.since) * 410 / kSwell : 0;
     place(frame, panel::halo, panel::centre_x * unit, panel::centre_y * unit, unit + swell, panel::shade_grey2, stroke);
     // The sun brightens and grows while a line plays.
     place(frame, panel::sun, panel::centre_x * unit, panel::centre_y * unit, playing ? unit + unit / 4 : unit,

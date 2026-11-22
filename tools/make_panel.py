@@ -50,10 +50,12 @@ for ring, (rx, ry) in enumerate(RINGS):
         pts.append((rx * math.cos(a), ry * math.sin(a)))
     d = "M" + " L".join(f"{f(x)},{f(y)}" for x, y in pts) + " Z"
     out.append(f'<path id="{node(f"ring{ring}")}" transform="matrix(1 0 0 1 {CX} {CY})" d="{d}" fill="none" stroke="#5A5A5A" stroke-width="0.6"/>')
-# The sun: the key you hold, with a halo that pulses as notes sound.
-out.append(f'<circle cx="{CX}" cy="{CY}" r="22" fill="none" stroke="#2E2E2E" stroke-width="0.8"/>')
-out.append(f'<circle id="{node("halo")}" transform="matrix(1 0 0 1 {CX} {CY})" cx="0" cy="0" r="17" fill="none" stroke="#8C8C8C" stroke-width="1"/>')
-out.append(f'<circle id="{node("sun")}" transform="matrix(1 0 0 1 {CX} {CY})" cx="0" cy="0" r="11" fill="#E6E6E6" stroke="#E6E6E6" stroke-width="0.5"/>')
+# The sun: the key you hold, with a halo that pulses as notes sound. A little smaller than
+# Halcyon Wander's, as is the marble, so that a note on the inner ring's top or bottom place
+# stays clear of the sun's circles even at the halo's full swell.
+out.append(f'<circle cx="{CX}" cy="{CY}" r="19" fill="none" stroke="#2E2E2E" stroke-width="0.8"/>')
+out.append(f'<circle id="{node("halo")}" transform="matrix(1 0 0 1 {CX} {CY})" cx="0" cy="0" r="15" fill="none" stroke="#8C8C8C" stroke-width="1"/>')
+out.append(f'<circle id="{node("sun")}" transform="matrix(1 0 0 1 {CX} {CY})" cx="0" cy="0" r="10" fill="#E6E6E6" stroke="#E6E6E6" stroke-width="0.5"/>')
 # The twelve places on each ring; the scale's notes light up.
 for ring in range(4):
     for s in range(12):
@@ -64,7 +66,7 @@ for k in range(3):
     out.append(f'<circle id="{node(f"ripple{k}")}" transform="matrix(1 0 0 1 {CX} {CY})" cx="0" cy="0" r="6" fill="none" stroke="#8C8C8C" stroke-width="0.6"/>')
 for k in range(4):
     out.append(f'<circle id="{node(f"trail{k}")}" transform="matrix(1 0 0 1 {CX} {CY})" cx="0" cy="0" r="3.5" fill="#8C8C8C" stroke="#8C8C8C" stroke-width="0.4"/>')
-out.append(f'<circle id="{node("marble")}" transform="matrix(1 0 0 1 {CX} {CY})" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>')
+out.append(f'<circle id="{node("marble")}" transform="matrix(1 0 0 1 {CX} {CY})" cx="0" cy="0" r="6" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>')
 
 # Text slot 16: "hold" while Hold is on, under the orrery.
 text_hold = len(texts)
