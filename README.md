@@ -36,9 +36,9 @@ and the sound is a plain test tone standing in for the track's instrument.
 
 | Page 1 | |
 | --- | --- |
-| **Rate** | how often the line steps, on the project tempo: 2/1 down to 1/32, with triplets |
 | **Chance** | how many of those steps sound, 0 to 100 % |
 | **Scale** | minor, dorian, harmonic minor, phrygian, lydian, major, major pentatonic, minor pentatonic |
+| **Rate** | how often the line steps. Clock on sync: on the project tempo, 2/1 down to 1/32, with triplets. Clock on free: Halcyon Wander's own Rate, from a step every 4 s to 16 a second |
 | **Gate** | how long each note holds, 10 to 100 % of a step, or **tie**: until the next note sounds |
 
 | Page 2 (press) | |
@@ -48,9 +48,10 @@ and the sound is a plain test tone standing in for the track's instrument.
 | **Spread** | how far it roams above the key: 1 to 4 octaves |
 | **Jitter** | loosens the timing: each step lands up to a quarter step early or late |
 
-| Shift + encoder 1 | |
+| Shift | |
 | --- | --- |
-| **Hold** | off or on. On: lines keep playing after you let go; the next key you press after letting go of everything replaces them, and turning Hold off stops what no finger holds. The page shows "hold" while it is on |
+| **Hold** (encoder 1) | off or on. On: lines keep playing after you let go; the next key you press after letting go of everything replaces them, and turning Hold off stops what no finger holds. The page shows "hold" while it is on |
+| **Clock** (encoder 2) | sync or free. Sync: Rate in note lengths on the project tempo. Free: Rate exactly as Halcyon Wander's, in seconds whatever the tempo, its value shown in seconds ("4.0s", "250ms") |
 
 The first note is always the key you hold, at the velocity you played it; the
 notes after it are up to a quarter quieter. Every press starts a new line. Hold
@@ -81,13 +82,15 @@ marble shows, so that it stays solid.
 - **Sound** is gone: the track's instrument makes the sound. The fifteen Halcyon
   sounds stay in [Halcyon Wander](https://github.com/colorsinspace1/halcyon-wander).
 - **Gate** is new: a synth decided how long its notes rang, a player has to say.
-- **Rate** follows the project tempo in note lengths instead of seconds.
-- Page 1's controls are lists that step one choice per detent: on a player's
-  first page the SDK otherwise edits encoder 2 in four steps and encoder 4 as
-  off/on.
-- The line stops when the key is let go, unless **Hold** is on (new). Hold is on
-  the player's Shift row, which the SDK doesn't save with the project, so it is
-  off when a project loads. With eight keys latched, the first key of the next
+- **Rate** follows the project tempo in note lengths, unless **Clock** is on
+  free (Shift + encoder 2), which runs Halcyon Wander's own Rate in seconds.
+  Rate is on encoder 3, the one knob a player's first page turns smoothly, as
+  Halcyon Wander's did; Chance, Scale and Gate are lists that step one choice per
+  detent, because a player's first page otherwise edits encoder 2 in four steps
+  and encoder 4 as off/on.
+- The line stops when the key is let go, unless **Hold** is on (new). Hold and
+  Clock are on the player's Shift row, which the SDK doesn't save with the
+  project, so they are off and sync when a project loads. With eight keys latched, the first key of the next
   chord is silent (stock holds eight roots until the old ones are stopped); the
   chord's other keys play.
 - The screen: see above.

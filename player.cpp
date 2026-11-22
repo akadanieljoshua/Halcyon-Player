@@ -36,7 +36,9 @@ const u16 kParkedDelay = 65535;             // player steps before a parked tone
 const u32 kRearmInterval = 32768;           // parked tones are renewed well before that
 
 // --- Controls ----------------------------------------------------------------------
-// Rate: each choice's length in player steps (240 a quarter note).
+// Page 1: Chance, Scale, Rate, Gate. Rate is encoder 3, the first page's one smooth
+// knob, so that with Clock on free it turns as Halcyon Wander's did.
+// Rate, Clock on sync: each choice's length in player steps (240 a quarter note).
 const u32 kRates = 10;
 const u16 kRateSteps[kRates] = {1920, 960, 480, 240, 160, 120, 80, 60, 40, 30};
 const char kRateNames[kRates][6] = {"2/1", "1/1", "1/2", "1/4", "1/4t", "1/8", "1/8t", "1/16", "1/16t", "1/32"};
@@ -73,12 +75,40 @@ struct Params {
 
 inline u32 amount(i32 v) { return v <= 0 ? 0u : static_cast<u32>(v) >> 16; }   // 0..32767
 
+// Clock (the shift row's second entry, Shift + encoder 2): sync steps Rate in note
+// lengths on the project tempo; free runs Halcyon Wander's own Rate, in seconds.
+inline bool clock_free(const Controls& c) { return opxy::player::choice(c.shift_value[1], 2) == 1; }
+
+// Halcyon Wander's mul_shift and Rate (journey.h), unchanged: one step every 4 s with
+// Rate fully down, then up to six octaves faster along its curve, in 44.1 kHz frames.
+inline u32 mul_shift(u32 a, u32 b, u32 shift) {
+    const u32 al = a & 0xffffu, ah = a >> 16, bl = b & 0xffffu, bh = b >> 16;
+    const u32 ll = al * bl, lh = al * bh, hl = ah * bl, hh = ah * bh;
+    const u32 mid = (ll >> 16) + (lh & 0xffffu) + (hl & 0xffffu);
+    const u32 hi = hh + (lh >> 16) + (hl >> 16) + (mid >> 16);
+    const u32 lo = (mid << 16) | (ll & 0xffffu);
+    return shift >= 32 ? hi >> (shift - 32) : (hi << (32 - shift)) | (lo >> shift);
+}
+inline u32 free_frames(u32 rate) {
+    const u32 octaves = rate * 6u;                      // Q15: up to 6 octaves faster
+    const u32 whole = octaves >> 15, part = octaves & 32767u;
+    u32 frames = 176400u >> whole;
+    frames -= mul_shift(frames, part, 16);
+    return frames < 2205u ? 2205u : frames;
+}
+// Those frames in player steps, which run at the tempo: 240 a beat, bpm_x10 * 0.4 a second.
+inline u32 free_steps(const Controls& c) {
+    const u32 bpm_x10 = c.bpm_x10 ? c.bpm_x10 : 1200u;   // 120 BPM when unknown
+    const u32 steps = (free_frames(amount(c.value[2])) * bpm_x10 + 55125u) / 110250u;
+    return steps ? steps : 1;
+}
+
 inline Params read_params(const Controls& c) {
     using opxy::player::choice;
     Params p;
-    p.interval = kRateSteps[choice(c.value[0], kRates)];
-    p.chance = choice(c.value[1], kChances) * 5u * 335544u >> 10;   // percent to Q15, 100 % = 32768
-    p.scale = choice(c.value[2], kScales);
+    p.interval = clock_free(c) ? free_steps(c) : kRateSteps[choice(c.value[2], kRates)];
+    p.chance = choice(c.value[0], kChances) * 5u * 335544u >> 10;   // percent to Q15, 100 % = 32768
+    p.scale = choice(c.value[1], kScales);
     p.gate = choice(c.value[3], kGates);
     p.dejavu = amount(c.value[4]);
     p.length = 1u + choice(c.value[5], kLoop);
@@ -271,7 +301,7 @@ inline void clock_step(State& s, const Controls& c) {
         // The press's own note sounds on the key's step 0; its gate counts from there.
         const u32 now = k.clock++;
         if (now && k.gate && --k.gate == 0 && (s.sounding >> i & 1)) s.off_mask |= static_cast<u8>(1u << i);
-        // The shortest Rate is 30 player steps, so at most one line step falls on this one.
+        // Every Rate is at least one player step, so at most one line step falls on this one.
         if (now < k.due) continue;
         const Step step = next_step(k, p);
         k.next += p.interval;
@@ -430,6 +460,20 @@ inline void show_number(char (&out)[8], u32 value, const char* suffix) {
     append(out, sizeof out, at, suffix);
 }
 
+// Rate: the note length on sync; on free, Halcyon Wander's step in seconds ("4.0s",
+// "250ms").
+inline void rate_caption(char (&out)[8], const Controls& c) {
+    if (!clock_free(c)) {
+        show(out, kRateNames[opxy::player::choice(c.value[2], kRates)]);
+        return;
+    }
+    const u32 ms = (free_frames(amount(c.value[2])) * 10u + 220u) / 441u;   // 50..4000
+    if (ms < 1000) { show_number(out, ms, "ms"); return; }
+    const u32 tenths = (ms + 50u) / 100u;                                    // 10..40
+    const char text[5] = {static_cast<char>('0' + tenths / 10u), '.', static_cast<char>('0' + tenths % 10u), 's', 0};
+    show(out, text);
+}
+
 inline u32 percent(u32 q15) { return (q15 * 100u + 16384u) >> 15; }
 
 // Player steps in tenths of a second at the current tempo (120 BPM when unknown).
@@ -449,9 +493,9 @@ const u32 kSunDot = 22, kHaloDot = 23;
 void display(const State& s, const Controls& c, Display& d) {
     using opxy::player::choice;
     const Params p = read_params(c);
-    show(d.values[0], kRateNames[choice(c.value[0], kRates)]);
-    show_number(d.values[1], choice(c.value[1], kChances) * 5u, "");
-    show(d.values[2], kScaleShort[p.scale]);
+    show_number(d.values[0], choice(c.value[0], kChances) * 5u, "");
+    show(d.values[1], kScaleShort[p.scale]);
+    rate_caption(d.values[2], c);
     if (p.gate >= kTie) show(d.values[3], "tie");
     else show_number(d.values[3], (p.gate + 1u) * 10u, "");
     show_number(d.values[4], percent(p.dejavu), "");
