@@ -1,0 +1,168 @@
+{
+  "schema": 1,
+  "id": "wander_player",
+  "name": "Wander Player",
+  "press": "page",
+  "parameters": [
+    {
+      "id": "rate",
+      "label": "Rate",
+      "default": 0.35,
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "2-1",
+          "1-1",
+          "1-2",
+          "1-4",
+          "1-4t",
+          "1-8",
+          "1-8t",
+          "1-16",
+          "1-16t",
+          "1-32"
+        ]
+      },
+      "display": "enum"
+    },
+    {
+      "id": "chance",
+      "label": "Chance",
+      "default": 0.642857,
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "0",
+          "5",
+          "10",
+          "15",
+          "20",
+          "25",
+          "30",
+          "35",
+          "40",
+          "45",
+          "50",
+          "55",
+          "60",
+          "65",
+          "70",
+          "75",
+          "80",
+          "85",
+          "90",
+          "95",
+          "100"
+        ]
+      },
+      "display": "enum"
+    },
+    {
+      "id": "scale",
+      "label": "Scale",
+      "default": 0.1875,
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "minor",
+          "dorian",
+          "harm min",
+          "phrygian",
+          "lydian",
+          "major",
+          "maj pent",
+          "min pent"
+        ]
+      },
+      "display": "enum"
+    },
+    {
+      "id": "gate",
+      "label": "Gate",
+      "default": 0.681818,
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "10",
+          "20",
+          "30",
+          "40",
+          "50",
+          "60",
+          "70",
+          "80",
+          "90",
+          "100",
+          "tie"
+        ]
+      },
+      "display": "enum"
+    },
+    {
+      "id": "dejavu",
+      "label": "Deja vu",
+      "default": 0.5,
+      "mapping": {
+        "kind": "linear",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "display": "percent"
+    },
+    {
+      "id": "length",
+      "label": "Length",
+      "default": 0.46875,
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16"
+        ]
+      },
+      "display": "enum"
+    },
+    {
+      "id": "spread",
+      "label": "Spread",
+      "default": 0.375,
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "1 oct",
+          "2 oct",
+          "3 oct",
+          "4 oct"
+        ]
+      },
+      "display": "enum"
+    },
+    {
+      "id": "jitter",
+      "label": "Jitter",
+      "default": 0.25,
+      "mapping": {
+        "kind": "linear",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "display": "percent"
+    }
+  ],
+  "presets": {},
+  "resources": {}
+}

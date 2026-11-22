@@ -1,0 +1,346 @@
+<g id="wander_player_panel">
+<circle cx="116.319" cy="110.396" r="0.6" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="227.753" cy="114.864" r="0.8" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="432.962" cy="101.246" r="0.8" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="94.503" cy="131.492" r="0.8" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="228.839" cy="121.966" r="0.5" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="303.654" cy="149.902" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="353.871" cy="125.912" r="0.5" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="361.885" cy="116.114" r="0.6" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="392.725" cy="76.871" r="0.8" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="438.314" cy="91.288" r="0.6" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="347.675" cy="114.383" r="0.5" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="49.998" cy="60.588" r="0.5" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="459.707" cy="97.212" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="202.782" cy="145.684" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="256.097" cy="93.724" r="0.5" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="325.896" cy="157.331" r="0.6" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="320.841" cy="63.898" r="0.6" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="431.017" cy="113.431" r="0.8" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="103.651" cy="145.456" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="138.5" cy="51.742" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="45.781" cy="141.673" r="0.6" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="13.499" cy="96.111" r="0.6" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="24.858" cy="118.973" r="0.5" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="343.104" cy="84.376" r="0.6" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="115.369" cy="48.394" r="0.5" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="55.032" cy="109.341" r="0.5" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="141.641" cy="76.132" r="0.8" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="466.506" cy="85.457" r="0.6" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="427.223" cy="90.09" r="0.6" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="186.283" cy="149.754" r="0.8" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="52.414" cy="162.692" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="207.522" cy="131.878" r="0.5" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="210.474" cy="75.504" r="0.6" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="163.965" cy="140.184" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="13.465" cy="119.127" r="0.8" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="32.358" cy="120.536" r="0.6" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="324.621" cy="87.014" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="352.352" cy="46.706" r="0.5" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="14.031" cy="89.038" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="144.956" cy="117.377" r="0.5" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="91.436" cy="136.489" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<circle cx="145.791" cy="90.014" r="0.5" fill="#8C8C8C" stroke="none" stroke-width="0"/>
+<circle cx="326.722" cy="60.033" r="0.8" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="312.557" cy="76.864" r="0.6" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="324.046" cy="123.244" r="0.5" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="287.542" cy="159.796" r="0.8" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="210.939" cy="148.375" r="0.5" fill="#2E2E2E" stroke="none" stroke-width="0"/>
+<circle cx="162.927" cy="123.328" r="0.8" fill="#5A5A5A" stroke="none" stroke-width="0"/>
+<path transform="matrix(1 0 0 1 240 104)" d="M150,0 L149.429,4.706 L147.721,9.377 L144.889,13.976 L140.954,18.469 L135.946,22.821 L129.904,27 L122.873,30.973 L114.907,34.711 L106.066,38.184 L96.418,41.366 L86.036,44.234 L75,46.765 L63.393,48.941 L51.303,50.743 L38.823,52.16 L26.047,53.18 L13.073,53.795 L0,54 L-13.073,53.795 L-26.047,53.18 L-38.823,52.16 L-51.303,50.743 L-63.393,48.941 L-75,46.765 L-86.036,44.234 L-96.418,41.366 L-106.066,38.184 L-114.907,34.711 L-122.873,30.973 L-129.904,27 L-135.946,22.821 L-140.954,18.469 L-144.889,13.976 L-147.721,9.377 L-149.429,4.706 L-150,0 L-149.429,-4.706 L-147.721,-9.377 L-144.889,-13.976 L-140.954,-18.469 L-135.946,-22.821 L-129.904,-27 L-122.873,-30.973 L-114.907,-34.711 L-106.066,-38.184 L-96.418,-41.366 L-86.036,-44.234 L-75,-46.765 L-63.393,-48.941 L-51.303,-50.743 L-38.823,-52.16 L-26.047,-53.18 L-13.073,-53.795 L-0,-54 L13.073,-53.795 L26.047,-53.18 L38.823,-52.16 L51.303,-50.743 L63.393,-48.941 L75,-46.765 L86.036,-44.234 L96.418,-41.366 L106.066,-38.184 L114.907,-34.711 L122.873,-30.973 L129.904,-27 L135.946,-22.821 L140.954,-18.469 L144.889,-13.976 L147.721,-9.377 L149.429,-4.706 Z" fill="none" stroke="#5A5A5A" stroke-width="0.6"/>
+<ellipse cx="240" cy="100" rx="62" ry="26" fill="none" stroke="#2E2E2E" stroke-width="0.8"/>
+<circle cx="240" cy="50" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="315" cy="57.235" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="369.904" cy="77" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="390" cy="104" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="369.904" cy="131" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="315" cy="150.765" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="240" cy="158" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="165" cy="150.765" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="110.096" cy="131" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="90" cy="104" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="110.096" cy="77" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<circle cx="165" cy="57.235" r="3" fill="#000000" stroke="#3A3A3A" stroke-width="1"/>
+<path d="M240,41 L240,36" fill="none" stroke="#8C8C8C" stroke-width="1"/>
+<circle id="wander_player_dot_0" transform="matrix(1 0 0 1 240 50)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_1" transform="matrix(1 0 0 1 315 57.235)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_2" transform="matrix(1 0 0 1 369.904 77)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_3" transform="matrix(1 0 0 1 390 104)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_4" transform="matrix(1 0 0 1 369.904 131)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_5" transform="matrix(1 0 0 1 315 150.765)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_6" transform="matrix(1 0 0 1 240 158)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_7" transform="matrix(1 0 0 1 165 150.765)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_8" transform="matrix(1 0 0 1 110.096 131)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_9" transform="matrix(1 0 0 1 90 104)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_10" transform="matrix(1 0 0 1 110.096 77)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_11" transform="matrix(1 0 0 1 165 57.235)" cx="0" cy="0" r="3.6" fill="#B4B4B4" stroke="#E6E6E6" stroke-width="1"/>
+<circle id="wander_player_dot_12" transform="matrix(1 0 0 1 240 50)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_13" transform="matrix(1 0 0 1 315 57.235)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_14" transform="matrix(1 0 0 1 369.904 77)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_15" transform="matrix(1 0 0 1 390 104)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_16" transform="matrix(1 0 0 1 369.904 131)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_17" transform="matrix(1 0 0 1 315 150.765)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_18" transform="matrix(1 0 0 1 240 158)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_19" transform="matrix(1 0 0 1 165 150.765)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_20" transform="matrix(1 0 0 1 110.096 131)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_21" transform="matrix(1 0 0 1 90 104)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_22" transform="matrix(1 0 0 1 110.096 77)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<circle id="wander_player_dot_23" transform="matrix(1 0 0 1 165 57.235)" cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5"/>
+<text id="wander_player_text" transform="matrix(1 0 0 1 240 111)" fill="#F2F2F2" font-family="UniversNextPro-Light" font-size="20">wander</text>
+<path id="wander_player_key_0" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_2" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_4" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_5" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_7" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_9" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_11" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_12" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_14" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_16" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_17" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_19" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_21" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_23" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_24" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_26" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_28" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_29" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_31" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_33" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_35" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_36" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_38" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_40" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_41" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_43" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_45" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_47" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_48" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_50" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_52" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_53" transform="matrix(1 0 0 1 18 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_55" transform="matrix(1 0 0 1 49.714 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_57" transform="matrix(1 0 0 1 81.429 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_59" transform="matrix(1 0 0 1 113.143 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_60" transform="matrix(1 0 0 1 144.857 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_62" transform="matrix(1 0 0 1 176.571 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_64" transform="matrix(1 0 0 1 208.286 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_65" transform="matrix(1 0 0 1 240 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_67" transform="matrix(1 0 0 1 271.714 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_69" transform="matrix(1 0 0 1 303.429 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_71" transform="matrix(1 0 0 1 335.143 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_72" transform="matrix(1 0 0 1 366.857 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_74" transform="matrix(1 0 0 1 398.571 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_76" transform="matrix(1 0 0 1 430.286 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_77" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_79" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_81" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_83" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_84" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_86" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_88" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_89" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_91" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_93" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_95" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_96" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_98" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_100" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_101" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_103" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_105" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_107" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_108" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_110" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_112" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_113" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_115" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_117" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_119" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_120" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_122" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_124" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_125" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_127" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L10,0 L10,44 L0,44 Z" fill="#B4B4B4" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_1" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_3" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_6" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_8" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_10" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_13" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_15" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_18" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_20" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_22" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_25" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_27" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_30" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_32" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_34" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_37" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_39" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_42" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_44" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_46" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_49" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_51" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_54" transform="matrix(1 0 0 1 71.914 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_56" transform="matrix(1 0 0 1 103.629 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_58" transform="matrix(1 0 0 1 135.343 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_61" transform="matrix(1 0 0 1 198.771 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_63" transform="matrix(1 0 0 1 230.486 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_66" transform="matrix(1 0 0 1 293.914 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_68" transform="matrix(1 0 0 1 325.629 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_70" transform="matrix(1 0 0 1 357.343 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_73" transform="matrix(1 0 0 1 420.771 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_75" transform="matrix(1 0 0 1 452.486 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_78" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_80" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_82" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_85" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_87" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_90" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_92" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_94" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_97" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_99" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_102" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_104" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_106" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_109" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_111" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_114" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_116" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_118" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_121" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_123" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<path id="wander_player_key_126" transform="matrix(1 0 0 1 1024 174)" d="M0,0 L6,0 L6,27 L0,27 Z" fill="#1E1E1E" stroke="#000000" stroke-width="1"/>
+<circle id="wander_player_played_0" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_1" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_2" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_3" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_4" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_5" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_6" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_7" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_8" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_9" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_10" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_11" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_12" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_13" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_14" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_15" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_16" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_17" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_18" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_19" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_20" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_21" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_22" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_23" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_24" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_25" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_26" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_27" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_28" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_29" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_30" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_31" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_32" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_33" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_34" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_35" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_36" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_37" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_38" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_39" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_40" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_41" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_42" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_43" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_44" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_45" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_46" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_47" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_48" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_49" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_50" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_51" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_52" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_53" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_54" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_55" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_56" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_57" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_58" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_59" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_60" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_61" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_62" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_63" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_64" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_65" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_66" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_67" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_68" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_69" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_70" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_71" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_72" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_73" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_74" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_75" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_76" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_77" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_78" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_79" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_80" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_81" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_82" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_83" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_84" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_85" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_86" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_87" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_88" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_89" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_90" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_91" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_92" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_93" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_94" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_95" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_96" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_97" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_98" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_99" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_100" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_101" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_102" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_103" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_104" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_105" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_106" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_107" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_108" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_109" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_110" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_111" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_112" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_113" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_114" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_115" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_116" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_117" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_118" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_119" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_120" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_121" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_122" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_123" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_124" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_125" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+<circle id="wander_player_played_126" transform="matrix(1 0 0 1 1024 195)" cx="0" cy="0" r="3" fill="#F0F0F0" stroke="#F0F0F0" stroke-width="0.5"/>
+<circle id="wander_player_played_127" transform="matrix(1 0 0 1 1024 211)" cx="0" cy="0" r="3" fill="#000000" stroke="#000000" stroke-width="0.5"/>
+</g>
