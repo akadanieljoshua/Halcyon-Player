@@ -94,7 +94,15 @@ inline void display(DisplayState& state, const State& s, const opxy::player::Con
     number(values[5], header_capacity, p.length, "");
     number(values[6], header_capacity, p.octaves, " oct");
     header_amount(values[7], header_capacity, c.value[7]);
-    page_header(state.header, input, frame, titles, values, panel::bar0);
+    // While Shift is held the header names and shows the Shift row instead, as a
+    // synth's does: Hold and Clock on encoders 1 and 2.
+    static const opxy::u8 slots[2][4] = {{0, 1, 2, 3}, {4, 5, 6, 7}};
+    static const char* const shift_titles[8] = {"Hold", "Clock", "", "", "", "", "", ""};
+    char shift_values[8][header_capacity] = {};
+    copy(shift_values[0], header_capacity, hold_on(c) ? "on" : "off");
+    copy(shift_values[1], header_capacity, clock_free(c) ? "free" : "sync");
+    const struct { u32 held; } shift = {c.shift};
+    page_header(state.header, input, frame, titles, values, panel::bar0, slots, shift, shift_titles, shift_values);
 
     // The line the orrery follows: the oldest key's, as Halcyon Wander's followed the
     // first. A note it has not seen joins the trail; another key starts a new trail.

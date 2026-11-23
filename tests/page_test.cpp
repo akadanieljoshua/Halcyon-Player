@@ -56,6 +56,20 @@ void header_scale_and_rings() {
     page.tick();
     require(!std::strcmp(page.frame.texts[6].chars, "63ms"));
     page.host.clock_free(false);
+    // Shift held: the header names the Shift row, Hold and Clock, and shows their settings.
+    page.host.controls.shift = 1;
+    page.tick();
+    require(!std::strcmp(page.frame.texts[0].chars, "hold") && !std::strcmp(page.frame.texts[1].chars, "clock"));
+    require(!std::strcmp(page.frame.texts[4].chars, "off") && !std::strcmp(page.frame.texts[5].chars, "sync"));
+    page.host.hold(true);
+    page.host.clock_free(true);
+    page.tick();
+    require(!std::strcmp(page.frame.texts[4].chars, "on") && !std::strcmp(page.frame.texts[5].chars, "free"));
+    page.host.controls.shift = 0;
+    page.host.hold(false);
+    page.host.clock_free(false);
+    page.tick();
+    require(!std::strcmp(page.frame.texts[0].chars, "chance") && !std::strcmp(page.frame.texts[6].chars, "1/32"));
     // Spread 2 octaves: two rings and their places; dorian's notes lit.
     require(!page.hidden(panel::ring0) && !page.hidden(panel::ring0 + 1) && page.hidden(panel::ring0 + 2));
     for (u32 n = 0; n < 12; ++n) {

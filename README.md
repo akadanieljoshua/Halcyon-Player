@@ -53,6 +53,9 @@ and the sound is a plain test tone standing in for the track's instrument.
 | **Hold** (encoder 1) | off or on. On: lines keep playing after you let go; the next key you press after letting go of everything replaces them, and turning Hold off stops what no finger holds. The page shows "hold" while it is on |
 | **Clock** (encoder 2) | sync or free. Sync: Rate in note lengths on the project tempo. Free: Rate exactly as Halcyon Wander's, in seconds whatever the tempo, its value shown in seconds ("4.0s", "0.25s", "63ms") |
 
+While you hold Shift the header names this row instead of page 1, with each
+setting under it: hold off or on, clock sync or free.
+
 The first note is always the key you hold, at the velocity you played it; the
 notes after it are up to a quarter quieter. Every press starts a new line. Hold
 a chord and each key wanders on a line of its own (up to eight keys). Let go
@@ -108,7 +111,7 @@ That checks the definition and artwork, draws the page on the host over a held
 key's frames, and runs `tests/player_test.cpp`, a host
 model of stock's chord records around the player (first note, Chance, Deja vu
 loops, Gate and tie, Jitter's window, chords, a ninth key, long silences,
-release and reset, Hold) and `tests/page_test.cpp` (the header, rings and scale,
+release and reset, Hold) and `tests/page_test.cpp` (the header and its Shift row, rings and scale,
 the marble landing on each note and gliding to the next, its trail, the halo and
 the second it lingers). `python tools/make_panel.py` rewrites the
 artwork; `tools/shot.cpp` and `tools/screens.py` draw the page for review.
