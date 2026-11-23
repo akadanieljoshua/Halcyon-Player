@@ -36,8 +36,8 @@ and the sound is a plain test tone standing in for the track's instrument.
 
 | Page 1 | |
 | --- | --- |
-| **Chance** | how many of those steps sound, 0 to 100 % |
 | **Scale** | minor, dorian, harmonic minor, phrygian, lydian, major, major pentatonic, minor pentatonic |
+| **Chance** | how many of those steps sound, 0 to 100 % |
 | **Rate** | how often the line steps. Clock on sync: on the project tempo, 2/1 down to 1/32, with triplets. Clock on free: Halcyon Wander's own Rate, from a step every 4 s to 16 a second |
 | **Gate** | how long each note holds, 10 to 100 % of a step, or **tie**: until the next note sounds |
 
@@ -86,7 +86,7 @@ adds in 1.22 (a pull request on `staging`, not yet merged). Until then the
 - **Rate** follows the project tempo in note lengths, unless **Clock** is on
   free (Shift + encoder 2), which runs Halcyon Wander's own Rate in seconds.
   Rate is on encoder 3, the one knob a player's first page turns smoothly, as
-  Halcyon Wander's did; Chance, Scale and Gate are lists that step one choice per
+  Halcyon Wander's did; Scale, Chance and Gate are lists that step one choice per
   detent, because a player's first page otherwise edits encoder 2 in four steps
   and encoder 4 as off/on.
 - The line stops when the key is let go, unless **Hold** is on (new). Hold and

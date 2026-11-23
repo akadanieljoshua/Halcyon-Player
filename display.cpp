@@ -82,11 +82,11 @@ inline void display_reset(DisplayState& state) {
 inline void display(DisplayState& state, const State& s, const opxy::player::Controls& c, const Input& input, Frame& frame) {
     const Params p = read_params(c);
 
-    // The header: Chance, Scale, Rate, Gate; page 2 Deja vu, Length, Spread, Jitter.
-    static const char* const titles[8] = {"Chance", "Scale", "Rate", "Gate", "Deja vu", "Length", "Spread", "Jitter"};
+    // The header: Scale, Chance, Rate, Gate; page 2 Deja vu, Length, Spread, Jitter.
+    static const char* const titles[8] = {"Scale", "Chance", "Rate", "Gate", "Deja vu", "Length", "Spread", "Jitter"};
     char values[8][header_capacity] = {};
-    number(values[0], header_capacity, opxy::player::choice(c.value[0], kChances) * 5u, "");
-    copy(values[1], header_capacity, kScaleShort[p.scale]);
+    copy(values[0], header_capacity, kScaleShort[p.scale]);
+    number(values[1], header_capacity, opxy::player::choice(c.value[1], kChances) * 5u, "");
     rate_caption(values[2], header_capacity, c);
     if (p.gate >= kTie) copy(values[3], header_capacity, "tie");
     else number(values[3], header_capacity, (p.gate + 1u) * 10u, "");

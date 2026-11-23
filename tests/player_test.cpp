@@ -21,7 +21,7 @@ void first_note_is_the_held_key() {
 
 void chance_zero_plays_only_the_key() {
     Host h;
-    h.set(0, 0, 21);
+    h.set(1, 0, 21);
     h.set(2, 9, 10);          // 1/32: many steps
     h.press(60);
     h.step(kQuarter * 16);
@@ -33,8 +33,8 @@ void chance_full_plays_every_step_in_scale_and_range() {
         for (u32 spread = 0; spread < 4; ++spread) {
             Host h;
             h.set(2, 7, 10);  // 1/16 = 60 steps
-            h.set(0, 20, 21); // 100 %
-            h.set(1, scale, 8);
+            h.set(1, 20, 21); // 100 %
+            h.set(0, scale, 8);
             h.set(6, spread, 4);
             h.amount(4, 0); h.amount(7, 0);
             h.press(48);
@@ -53,7 +53,7 @@ void chance_full_plays_every_step_in_scale_and_range() {
 
 void deja_vu_full_loops_the_phrase() {
     Host h;
-    h.set(2, 7, 10); h.set(0, 20, 21); h.amount(4, 1.0); h.set(5, 3, 16); h.amount(7, 0);
+    h.set(2, 7, 10); h.set(1, 20, 21); h.amount(4, 1.0); h.set(5, 3, 16); h.amount(7, 0);
     h.press(60);
     h.step(60 * 40);
     const std::vector<Event> on = h.ons();
@@ -65,7 +65,7 @@ void deja_vu_full_loops_the_phrase() {
 
 void deja_vu_zero_wanders() {
     Host h;
-    h.set(2, 7, 10); h.set(0, 20, 21); h.amount(4, 0); h.set(5, 3, 16); h.amount(7, 0); h.set(6, 3, 4);
+    h.set(2, 7, 10); h.set(1, 20, 21); h.amount(4, 0); h.set(5, 3, 16); h.amount(7, 0); h.set(6, 3, 4);
     h.press(60);
     h.step(60 * 40);
     const std::vector<Event> on = h.ons();
@@ -76,7 +76,7 @@ void deja_vu_zero_wanders() {
 
 void every_press_starts_a_new_line() {
     Host h;
-    h.set(2, 7, 10); h.set(0, 20, 21); h.amount(7, 0); h.set(6, 3, 4);
+    h.set(2, 7, 10); h.set(1, 20, 21); h.amount(7, 0); h.set(6, 3, 4);
     h.press(60); h.step(60 * 16); h.release(60);
     const std::vector<Event> a = h.ons();
     h.events.clear();
@@ -91,7 +91,7 @@ void every_press_starts_a_new_line() {
 void gate_sets_the_note_length() {
     Host h;
     h.set(2, 3, 10);          // 1/4 = 240 steps
-    h.set(0, 20, 21); h.amount(7, 0);
+    h.set(1, 20, 21); h.amount(7, 0);
     h.set(3, 4, 11);          // 50 %
     h.press(60);
     h.step(240 * 8);
@@ -106,7 +106,7 @@ void gate_sets_the_note_length() {
 void tie_holds_until_the_next_note() {
     Host h;
     h.set(2, 5, 10);          // 1/8 = 120
-    h.set(0, 10, 21);         // 50 %: rests between notes
+    h.set(1, 10, 21);         // 50 %: rests between notes
     h.set(3, 10, 11);         // tie
     h.amount(7, 0);
     h.press(60);
@@ -119,7 +119,7 @@ void tie_holds_until_the_next_note() {
 
 void jitter_stays_within_a_quarter_step() {
     Host h;
-    h.set(2, 3, 10); h.set(0, 20, 21); h.amount(7, 1.0);
+    h.set(2, 3, 10); h.set(1, 20, 21); h.amount(7, 1.0);
     h.press(60);
     h.step(240 * 40);
     const std::vector<Event> on = h.ons();
@@ -136,7 +136,7 @@ void jitter_stays_within_a_quarter_step() {
 
 void release_ends_the_line() {
     Host h;
-    h.set(2, 7, 10); h.set(0, 20, 21);
+    h.set(2, 7, 10); h.set(1, 20, 21);
     h.press(60);
     h.step(600);
     require(!h.release(60));
@@ -148,7 +148,7 @@ void release_ends_the_line() {
 
 void each_key_of_a_chord_wanders() {
     Host h;
-    h.set(2, 7, 10); h.set(0, 20, 21); h.set(3, 10, 11);
+    h.set(2, 7, 10); h.set(1, 20, 21); h.set(3, 10, 11);
     const u32 keys[3] = {48, 55, 63};
     for (u32 k : keys) h.press(k);
     for (u32 n = 0; n < 60 * 64; ++n) { h.step(); require(h.sounding() <= 3); }
@@ -163,7 +163,7 @@ void each_key_of_a_chord_wanders() {
 
 void eight_keys_and_a_ninth() {
     Host h;
-    h.set(2, 9, 10); h.set(0, 20, 21); h.amount(7, 1.0);
+    h.set(2, 9, 10); h.set(1, 20, 21); h.amount(7, 1.0);
     for (u32 k = 0; k < 8; ++k) require(h.press(40 + 3 * k));
     require(h.press(90));     // taken, silent: the SDK holds no ninth root
     for (u32 n = 0; n < 30 * 100; ++n) { h.step(); require(h.sounding() <= 8); }
@@ -176,7 +176,7 @@ void eight_keys_and_a_ninth() {
 
 void a_long_silence_never_leaks_a_parked_tone() {
     Host h;
-    h.set(0, 0, 21);          // only the first note
+    h.set(1, 0, 21);          // only the first note
     h.set(3, 0, 11);          // 10 % gate: then parked
     h.press(60);
     h.step(200000);           // past the parked tone's delay several times
@@ -189,7 +189,7 @@ void a_long_silence_never_leaks_a_parked_tone() {
 
 void high_keys_stay_in_midi() {
     Host h;
-    h.set(2, 9, 10); h.set(0, 20, 21); h.set(6, 3, 4);
+    h.set(2, 9, 10); h.set(1, 20, 21); h.set(6, 3, 4);
     h.press(120);
     h.step(30 * 200);
     for (const Event& e : h.ons()) require(e.pitch <= 127);
@@ -214,7 +214,7 @@ std::vector<u32> sounding_pitches(const Host& h) {
 
 void hold_keeps_lines_playing() {
     Host h;
-    h.set(2, 7, 10); h.set(0, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
+    h.set(2, 7, 10); h.set(1, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
     h.hold(true);
     h.press(36);
     h.step(600);
@@ -244,7 +244,7 @@ void hold_keeps_lines_playing() {
 
 void hold_off_stops_what_no_finger_holds() {
     Host h;
-    h.set(2, 7, 10); h.set(0, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
+    h.set(2, 7, 10); h.set(1, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
     h.hold(true);
     h.press(36); h.press(60);
     h.step(300);
@@ -263,7 +263,7 @@ void hold_off_stops_what_no_finger_holds() {
 
 void hold_eight_then_a_new_chord() {
     Host h;
-    h.set(2, 9, 10); h.set(0, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
+    h.set(2, 9, 10); h.set(1, 20, 21); h.set(6, 0, 4); h.set(3, 10, 11);
     h.hold(true);
     for (u32 k = 0; k < 8; ++k) h.press(30 + 10 * k);
     h.step(100);
@@ -298,7 +298,7 @@ void free_clock_is_halcyon_wanders_rate() {
             h.controls.bpm_x10 = tempos[t];
             h.clock_free(true);
             h.controls.value[2] = static_cast<i32>(original[i][0] << 16);
-            h.set(0, 20, 21); h.amount(7, 0);
+            h.set(1, 20, 21); h.amount(7, 0);
             // The expected step in player steps (bpm_x10 * 0.4 a second), to the nearest.
             const double seconds = original[i][1] / 44100.0;
             const u32 step = static_cast<u32>(seconds * tempos[t] * 0.4 + 0.5);
@@ -310,7 +310,7 @@ void free_clock_is_halcyon_wanders_rate() {
         }
     // Sync is unchanged: Rate's ten note lengths on the tempo.
     Host h;
-    h.set(2, 3, 10); h.set(0, 20, 21); h.amount(7, 0);
+    h.set(2, 3, 10); h.set(1, 20, 21); h.amount(7, 0);
     h.press(60);
     h.step(240 * 4 + 1);
     require(h.ons().size() == 5 && h.ons()[1].time == 240);

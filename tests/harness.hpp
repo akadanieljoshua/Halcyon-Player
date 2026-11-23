@@ -40,7 +40,7 @@ struct Host {
     void clock_free(bool on) { controls.shift_value[1] = on ? 0x60000000 : 0x20000000; }
     // The definition's defaults: 65 %, dorian, 1/4, 80 %, deja vu 50 %, 8 steps, 2 oct, jitter 25 %.
     void defaults() {
-        set(2, 3, 10); set(0, 13, 21); set(1, 1, 8); set(3, 7, 11);
+        set(2, 3, 10); set(1, 13, 21); set(0, 1, 8); set(3, 7, 11);
         amount(4, 0.5); set(5, 7, 16); set(6, 1, 4); amount(7, 0.25);
     }
 
