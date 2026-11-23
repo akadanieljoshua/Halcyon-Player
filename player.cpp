@@ -105,7 +105,7 @@ inline u32 free_steps(const Controls& c) {
 
 inline Params read_params(const Controls& c) {
     using opxy::player::choice;
-    Params p;
+    Params p = {};
     p.interval = clock_free(c) ? free_steps(c) : kRateSteps[choice(c.value[2], kRates)];
     p.chance = choice(c.value[1], kChances) * 5u * 335544u >> 10;   // percent to Q15, 100 % = 32768
     p.scale = choice(c.value[0], kScales);
@@ -290,7 +290,10 @@ inline void clock_step(State& s, const Controls& c) {
         for (u32 i = 0; i < kKeys; ++i)
             if ((s.active >> i & 1) && !(s.held >> i & 1)) stop_key(s, i);
     if (!s.active) return;
-    const Params p = read_params(c);
+    // The controls are read only on a step where a key's line moves: most steps
+    // only count gates down (at 1/8, one step in 120 moves a line).
+    Params p = {};
+    bool read = false;
     if (++s.rearm >= kRearmInterval) {
         s.rearm = 0;
         s.off_mask |= static_cast<u8>(s.active & ~s.sounding & ~s.on_mask);
@@ -303,6 +306,7 @@ inline void clock_step(State& s, const Controls& c) {
         if (now && k.gate && --k.gate == 0 && (s.sounding >> i & 1)) s.off_mask |= static_cast<u8>(1u << i);
         // Every Rate is at least one player step, so at most one line step falls on this one.
         if (now < k.due) continue;
+        if (!read) { p = read_params(c); read = true; }
         const Step step = next_step(k, p);
         k.next += p.interval;
         k.due = landing(k, p);
