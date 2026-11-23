@@ -17,7 +17,7 @@ On today's SDK (the `main` branch), the page is built from the player page's 24 
 
 [![Halcyon Player on the 24-dot page: the marble jumps from note to note](media/dot-page.gif)](media/dot-page.mp4)
 
-With its own drawn page (the `drawn-page` branch, which needs SDK 1.22, still a
+With its own drawn page (the `drawn-page` branch, which needs SDK 1.24, still a
 [pull request](https://github.com/etcetc000/open-xy/pull/578)), the marble glides
 to each note, trails its last moves and the halo swells, as in Halcyon Wander:
 
