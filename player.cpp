@@ -468,7 +468,13 @@ inline void rate_caption(char (&out)[8], const Controls& c) {
         return;
     }
     const u32 ms = (free_frames(amount(c.value[2])) * 10u + 220u) / 441u;   // 50..4000
-    if (ms < 1000) { show_number(out, ms, "ms"); return; }
+    if (ms < 100) { show_number(out, ms, "ms"); return; }
+    if (ms < 995) {                                                          // "0.43s": "425ms" is too wide
+        const u32 hundredths = (ms + 5u) / 10u;                              // 10..99
+        const char text[6] = {'0', '.', static_cast<char>('0' + hundredths / 10u), static_cast<char>('0' + hundredths % 10u), 's', 0};
+        show(out, text);
+        return;
+    }
     const u32 tenths = (ms + 50u) / 100u;                                    // 10..40
     const char text[5] = {static_cast<char>('0' + tenths / 10u), '.', static_cast<char>('0' + tenths % 10u), 's', 0};
     show(out, text);

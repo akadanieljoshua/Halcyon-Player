@@ -423,6 +423,16 @@ void free_clock_is_halcyon_wanders_rate() {
     h.press(60);
     h.step(240 * 4 + 1);
     require(h.ons().size() == 5 && h.ons()[1].time == 240);
+    // Its caption fits the header's cell: "4.0s", "0.50s", "63ms".
+    const struct { double amount; const char* text; } captions[3] = {{0, "4.0s"}, {0.5, "0.50s"}, {1.0, "63ms"}};
+    for (u32 i = 0; i < 3; ++i) {
+        Host c;
+        c.clock_free(true);
+        c.amount(2, captions[i].amount);
+        player::Display d = {};
+        wp::display(c.state, c.controls, d);
+        require(!std::strcmp(d.values[2], captions[i].text));
+    }
 }
 
 int main() {
