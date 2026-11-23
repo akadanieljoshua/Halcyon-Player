@@ -51,7 +51,7 @@ and the sound is a plain test tone standing in for the track's instrument.
 | Shift | |
 | --- | --- |
 | **Hold** (encoder 1) | off or on. On: lines keep playing after you let go; the next key you press after letting go of everything replaces them, and turning Hold off stops what no finger holds. The page shows "hold" while it is on |
-| **Clock** (encoder 2) | sync or free. Sync: Rate in note lengths on the project tempo. Free: Rate exactly as Halcyon Wander's, in seconds whatever the tempo, its value shown in seconds ("4.0s", "250ms") |
+| **Clock** (encoder 2) | sync or free. Sync: Rate in note lengths on the project tempo. Free: Rate exactly as Halcyon Wander's, in seconds whatever the tempo, its value shown in seconds ("4.0s", "0.25s", "63ms") |
 
 The first note is always the key you hold, at the velocity you played it; the
 notes after it are up to a quarter quieter. Every press starts a new line. Hold

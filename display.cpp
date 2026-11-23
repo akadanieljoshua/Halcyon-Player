@@ -37,15 +37,24 @@ void number(char* out, u32 capacity, u32 value, const char* suffix) {
 }
 
 // Rate: the note length on sync; on free, Halcyon Wander's step in seconds ("4.0s",
-// "250ms").
+// "0.25s", "63ms").
 inline void rate_caption(char* out, u32 capacity, const opxy::player::Controls& c) {
     if (!clock_free(c)) {
         copy(out, capacity, kRateNames[opxy::player::choice(c.value[2], kRates)]);
         return;
     }
     const u32 ms = (free_frames(amount(c.value[2])) * 10u + 220u) / 441u;   // 50..4000
-    if (ms < 1000) { number(out, capacity, ms, "ms"); return; }
+    if (ms < 100) { number(out, capacity, ms, "ms"); return; }
     char text[8] = {};
+    if (ms < 995) {                                                          // "0.43s": "425ms" is too wide
+        const u32 hundredths = (ms + 5u) / 10u;                              // 10..99
+        text[0] = '0'; text[1] = '.';
+        text[2] = static_cast<char>('0' + hundredths / 10u);
+        text[3] = static_cast<char>('0' + hundredths % 10u);
+        text[4] = 's';
+        copy(out, capacity, text);
+        return;
+    }
     const u32 tenths = (ms + 50u) / 100u;                                    // 10..40
     text[0] = static_cast<char>('0' + tenths / 10u);
     text[1] = '.';

@@ -49,6 +49,9 @@ void header_scale_and_rings() {
     page.host.amount(2, 0);
     page.tick();
     require(!std::strcmp(page.frame.texts[6].chars, "4.0s"));
+    page.host.amount(2, 0.5);
+    page.tick();
+    require(!std::strcmp(page.frame.texts[6].chars, "0.50s"));
     page.host.amount(2, 1.0);
     page.tick();
     require(!std::strcmp(page.frame.texts[6].chars, "63ms"));
