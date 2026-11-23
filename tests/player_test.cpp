@@ -273,6 +273,19 @@ void hold_off_stops_what_no_finger_holds() {
     d = player::Display();
     wp::display(h.state, h.controls, d);
     require(d.text[0] == 0);
+    // Shift held: the line names the Shift row and its settings.
+    h.controls.shift = 1;
+    d = player::Display();
+    wp::display(h.state, h.controls, d);
+    require(!std::strcmp(d.text, "hold off / clock sync"));
+    h.hold(true);
+    h.clock_free(true);
+    d = player::Display();
+    wp::display(h.state, h.controls, d);
+    require(!std::strcmp(d.text, "hold on / clock free"));
+    h.controls.shift = 0;
+    h.hold(false);
+    h.clock_free(false);
 }
 
 void hold_eight_then_a_new_chord() {

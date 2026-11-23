@@ -509,8 +509,13 @@ void display(const State& s, const Controls& c, Display& d) {
     show_number(d.values[6], p.octaves, " oct");
     show_number(d.values[7], percent(p.jitter), "");
 
-    if (hold_on(c)) {
-        u32 at = 0;
+    // The line under the orrery: "hold" while Hold is on; while Shift is held, the
+    // Shift row (the header's titles are the page's, so the row is named here).
+    u32 at = 0;
+    if (c.shift) {
+        append(d.text, sizeof d.text, at, hold_on(c) ? "hold on / " : "hold off / ");
+        append(d.text, sizeof d.text, at, clock_free(c) ? "clock free" : "clock sync");
+    } else if (hold_on(c)) {
         append(d.text, sizeof d.text, at, "hold");
     }
     d.lit = 1u << (kScaleDots + p.scale);
