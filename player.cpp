@@ -36,7 +36,7 @@ const u16 kParkedDelay = 65535;             // player steps before a parked tone
 const u32 kRearmInterval = 32768;           // parked tones are renewed well before that
 
 // --- Controls ----------------------------------------------------------------------
-// Page 1: Chance, Scale, Rate, Gate. Rate is encoder 3, the first page's one smooth
+// Page 1: Scale, Chance, Rate, Gate. Rate is encoder 3, the first page's one smooth
 // knob, so that with Clock on free it turns as Halcyon Wander's did.
 // Rate, Clock on sync: each choice's length in player steps (240 a quarter note).
 const u32 kRates = 10;
@@ -107,8 +107,8 @@ inline Params read_params(const Controls& c) {
     using opxy::player::choice;
     Params p;
     p.interval = clock_free(c) ? free_steps(c) : kRateSteps[choice(c.value[2], kRates)];
-    p.chance = choice(c.value[0], kChances) * 5u * 335544u >> 10;   // percent to Q15, 100 % = 32768
-    p.scale = choice(c.value[1], kScales);
+    p.chance = choice(c.value[1], kChances) * 5u * 335544u >> 10;   // percent to Q15, 100 % = 32768
+    p.scale = choice(c.value[0], kScales);
     p.gate = choice(c.value[3], kGates);
     p.dejavu = amount(c.value[4]);
     p.length = 1u + choice(c.value[5], kLoop);
@@ -499,8 +499,8 @@ const u32 kSunDot = 22, kHaloDot = 23;
 void display(const State& s, const Controls& c, Display& d) {
     using opxy::player::choice;
     const Params p = read_params(c);
-    show_number(d.values[0], choice(c.value[0], kChances) * 5u, "");
-    show(d.values[1], kScaleShort[p.scale]);
+    show(d.values[0], kScaleShort[p.scale]);
+    show_number(d.values[1], choice(c.value[1], kChances) * 5u, "");
     rate_caption(d.values[2], c);
     if (p.gate >= kTie) show(d.values[3], "tie");
     else show_number(d.values[3], (p.gate + 1u) * 10u, "");

@@ -34,7 +34,7 @@ int main() {
     std::printf(",");
     {
         Host h;
-        h.set(0, 20, 21);
+        h.set(1, 20, 21);
         h.hold(true);
         h.press(57);
         h.step(240 * 3);
@@ -45,7 +45,7 @@ int main() {
     std::printf(",");
     {
         Host h;
-        h.set(0, 20, 21); h.set(1, 6, 8); h.set(6, 3, 4);
+        h.set(1, 20, 21); h.set(0, 6, 8); h.set(6, 3, 4);
         h.press(53);
         h.step(240 * 7 + 100);
         frame(h, "major pentatonic, 4 octaves", false);
@@ -53,7 +53,7 @@ int main() {
     std::printf(",");
     {
         Host h;
-        h.set(0, 20, 21); h.set(1, 0, 8); h.set(6, 0, 4);
+        h.set(1, 20, 21); h.set(0, 0, 8); h.set(6, 0, 4);
         h.press(62);
         h.step(240 * 9 + 100);
         frame(h, "page 2: minor, 1 octave", true);

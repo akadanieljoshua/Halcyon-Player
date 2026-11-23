@@ -5,6 +5,25 @@
   "press": "page",
   "parameters": [
     {
+      "id": "scale",
+      "label": "Scale",
+      "default": 0.1875,
+      "mapping": {
+        "kind": "enum",
+        "labels": [
+          "minor",
+          "dorian",
+          "harm min",
+          "phrygian",
+          "lydian",
+          "major",
+          "maj pent",
+          "min pent"
+        ]
+      },
+      "display": "enum"
+    },
+    {
       "id": "chance",
       "label": "Chance",
       "default": 0.642857,
@@ -32,25 +51,6 @@
           "90",
           "95",
           "100"
-        ]
-      },
-      "display": "enum"
-    },
-    {
-      "id": "scale",
-      "label": "Scale",
-      "default": 0.1875,
-      "mapping": {
-        "kind": "enum",
-        "labels": [
-          "minor",
-          "dorian",
-          "harm min",
-          "phrygian",
-          "lydian",
-          "major",
-          "maj pent",
-          "min pent"
         ]
       },
       "display": "enum"
