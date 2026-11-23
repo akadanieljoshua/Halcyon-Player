@@ -8,7 +8,7 @@ namespace {
 void frame(const Host& h, const char* caption, bool page2) {
     player::Display d = {};
     wp::display(h.state, h.controls, d);
-    static const char* const titles[8] = {"rate", "chance", "scale", "gate", "deja vu", "length", "spread", "jitter"};
+    static const char* const titles[8] = {"scale", "chance", "rate", "gate", "deja vu", "length", "spread", "jitter"};
     char values[8][opxy::draw::header_capacity] = {};
     for (u32 i = 0; i < 8; ++i) for (u32 k = 0; k < 7 && d.values[i][k]; ++k) values[i][k] = d.values[i][k];
     opxy::draw::PageHeader header = {};

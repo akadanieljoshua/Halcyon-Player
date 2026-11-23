@@ -38,7 +38,7 @@ and the sound is a plain test tone standing in for the track's instrument.
 | --- | --- |
 | **Scale** | minor, dorian, harmonic minor, phrygian, lydian, major, major pentatonic, minor pentatonic |
 | **Chance** | how many of those steps sound, 0 to 100 % |
-| **Rate** | how often the line steps. Clock on sync: on the project tempo, 2/1 down to 1/32, with triplets. Clock on free: Halcyon Wander's own Rate, from a step every 4 s to 16 a second |
+| **Rate** | how often the line steps. Clock on sync: on the project tempo, 2/1 down to 1/32, with triplets. Clock on free: Halcyon Wander's own Rate, from a step every 4 s to one every 62.5 ms (16 a second), as the original at both ends |
 | **Gate** | how long each note holds, 10 to 100 % of a step, or **tie**: until the next note sounds |
 
 | Page 2 (press) | |
