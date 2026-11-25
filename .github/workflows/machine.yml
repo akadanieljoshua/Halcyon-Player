@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 env:
-  # This branch needs SDK 1.24 (a player's own drawn page), which is still a pull request
+  # This branch needs SDK 1.26 (a player's own drawn page), which is still a pull request
   # (etcetc000/open-xy#578): check against its branch until it reaches staging, then
   # return to etcetc000/open-xy on staging. Pin a compatible SDK commit for a release.
   OPEN_XY_REPOSITORY: akadanieljoshua/comet1

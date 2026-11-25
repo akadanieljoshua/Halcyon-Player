@@ -6,7 +6,7 @@ namespace halcyon_player {
 // palette. tools/make_panel.py writes the artwork (panel.h).
 using Frame = opxy::draw::Frame<0, 0, 70, 17, 9>;
 // What the page remembers between frames. The line itself is the player's
-// State, which the page reads (SDK 1.24): it knows each note as it sounds and
+// State, which the page reads (SDK 1.26): it knows each note as it sounds and
 // when the next is due, so the marble can set off before it.
 struct DisplayState {
     opxy::draw::PageHeader header;

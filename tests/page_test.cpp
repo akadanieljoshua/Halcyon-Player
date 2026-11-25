@@ -1,4 +1,4 @@
-// Halcyon's own page (display.cpp, SDK 1.24) over the host model of the
+// Halcyon's own page (display.cpp, SDK 1.26) over the host model of the
 // player: the frames the device would draw, 60 a second at 120 BPM.
 #include "harness.hpp"
 #include "../display.cpp"

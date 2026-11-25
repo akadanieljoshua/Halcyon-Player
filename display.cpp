@@ -1,7 +1,7 @@
 #include "display.h"
 #include "panel.h"
 
-// Halcyon's own page (SDK 1.24): Halcyon Wander's orrery, by Colors In
+// Halcyon's own page (SDK 1.26): Halcyon Wander's orrery, by Colors In
 // Space, drawn from the player's State. The held key is the sun; each ring is an
 // octave of Spread; the scale's notes light up at their clock positions. A marble
 // lands on each note as it sounds, its last moves trailing behind, and sets off
