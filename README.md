@@ -13,16 +13,16 @@ whatever instrument the track plays, stock or SDK. On the OP–XY it is called
 
 ## See it
 
-On today's SDK (the `main` branch), the page is built from the player page's 24 dots:
-
-[![Halcyon Player on the 24-dot page: the marble jumps from note to note](media/dot-page.gif)](media/dot-page.mp4)
-
-With its own drawn page (the `drawn-page` branch, which needs SDK 1.26:
-[merged](https://github.com/etcetc000/open-xy/pull/578) into Open-XY's `staging`
-and due in its next release), the marble glides
-to each note, trails its last moves and the halo swells, as in Halcyon Wander:
+Halcyon draws its own page: the marble glides to each note, trails its last
+moves and the halo swells, as in Halcyon Wander:
 
 [![Halcyon Player's own drawn page: the marble glides between notes](media/drawn-page.gif)](media/drawn-page.mp4)
+
+For an SDK before 1.26, the [`dot-page`](https://github.com/akadanieljoshua/Halcyon-Player/tree/dot-page)
+branch keeps a version built from the player page's 24 dots, where the marble jumps
+from note to note:
+
+[![Halcyon Player on the 24-dot page: the marble jumps from note to note](media/dot-page.gif)](media/dot-page.mp4)
 
 Tap either for the video with sound. Next to the original:
 
@@ -54,8 +54,8 @@ and the sound is a plain test tone standing in for the track's instrument.
 | **Hold** (encoder 1) | off or on. On: lines keep playing after you let go; the next key you press after letting go of everything replaces them, and turning Hold off stops what no finger holds. The page shows "hold" while it is on |
 | **Clock** (encoder 2) | sync or free. Sync: Rate in note lengths on the project tempo. Free: Rate exactly as Halcyon Wander's, in seconds whatever the tempo, its value shown in seconds ("4.0s", "0.25s", "63ms") |
 
-While you hold Shift the line under the orrery shows this row's settings, for
-example "hold off / clock sync".
+While you hold Shift the header names this row instead of page 1, with each
+setting under it: hold off or on, clock sync or free.
 
 The first note is always the key you hold, at the velocity you played it; the
 notes after it are up to a quarter quieter. Every press starts a new line. Hold
@@ -66,20 +66,20 @@ last note.
 Sequenced notes play it too: a long step (or a held note in a pattern) is a
 held key, so give the sequenced notes the length you want the line to run.
 
-The page is Halcyon Wander's orrery, with its geometry, greys and star field:
-the key you hold is the sun, each ring an octave of Spread, the scale's notes
-lit at their clock positions, and a marble landing on each note as it sounds,
-on its octave's ring. The sun grows while a line plays, its halo swells as each
-note sounds, and the marble stays a second after the last key is let go. With
-a chord held, the orrery follows the first key.
+The page is Halcyon Wander's orrery, drawn as Halcyon Wander draws it: the key
+you hold is the sun, each ring an octave of Spread, the scale's notes lit at
+their clock positions, and a marble landing on each note as it sounds, its last
+moves trailing behind. The marble sets off for the next note 0.15 s before it is
+due and lands as it sounds; the sun grows while a line plays, its halo swells
+as each note sounds, and the marble lingers a second after the last key stops.
+With a chord held, the orrery follows the first key. "hold" shows under it while
+Hold is on.
 
-A note player can't draw its own screen as a synth does: the SDK's player page
-shows or hides 24 fixed shapes. `tools/make_panel.py` builds the orrery from
-those (scale, Spread, the marble's 48 places, sun and halo); what it can't
-carry is motion. So against Halcyon Wander the marble jumps to each note
-instead of gliding there, it leaves no trail, and the halo swells for a tenth
-of a second instead of easing back. The faint unlit places hide while the
-marble shows, so that it stays solid.
+The page needs a note player that draws its own screen, which the Open-XY SDK
+adds in 1.26 ([merged](https://github.com/etcetc000/open-xy/pull/578) into
+`staging`, due in its next release). The
+[`dot-page`](https://github.com/akadanieljoshua/Halcyon-Player/tree/dot-page)
+branch keeps the SDK 1.16 page made of the SDK's 24 dots.
 
 ## What changed from Halcyon Wander
 
@@ -97,22 +97,26 @@ marble shows, so that it stays solid.
   project, so they are off and sync when a project loads. With eight keys latched, the first key of the next
   chord is silent (stock holds eight roots until the old ones are stopped); the
   chord's other keys play.
-- The screen: see above.
+- The screen is Halcyon Wander's own, drawn from the player's State instead of
+  a copy of the line the synth's screen ran beside its sound.
 
 ## Develop
 
-Keep the [Open-XY SDK](https://github.com/etcetc000/open-xy) on `staging` beside
-this repository as `../open-xy`, then:
+Keep the [Open-XY SDK](https://github.com/etcetc000/open-xy) beside this
+repository as `../open-xy`, on `staging` (SDK 1.26, a player's own drawn page),
+then:
 
 ```
 python ../open-xy/sdk.py test --machine .
 ```
 
-That checks the definition and artwork and runs `tests/player_test.cpp`, a host
+That checks the definition and artwork, draws the page on the host over a held
+key's frames, and runs `tests/player_test.cpp`, a host
 model of stock's chord records around the player (first note, Chance, Deja vu
 loops, Gate and tie, Jitter's window, chords, a ninth key, long silences,
-release and reset, Hold, and the page's dots, decoded back into the marble's
-place). `python tools/make_panel.py` rewrites the
+release and reset, Hold) and `tests/page_test.cpp` (the header and its Shift row, rings and scale,
+the marble landing on each note and gliding to the next, its trail, the halo and
+the second it lingers). `python tools/make_panel.py` rewrites the
 artwork; `tools/shot.cpp` and `tools/screens.py` draw the page for review.
 
 Not yet checked on an OP–XY. The SDK reads stock's player step (240 per
