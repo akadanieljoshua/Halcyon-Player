@@ -13,11 +13,13 @@ whatever instrument the track plays, stock or SDK. On the OP–XY it is called
 
 ## See it
 
-On today's SDK (the `main` branch), the page is built from the player page's 24 dots:
+This `dot-page` branch is for an SDK before 1.26: its page is built from the player
+page's 24 dots. The [`main`](https://github.com/akadanieljoshua/Halcyon-Player) branch
+draws its own page (SDK 1.26).
 
 [![Halcyon Player on the 24-dot page: the marble jumps from note to note](media/dot-page.gif)](media/dot-page.mp4)
 
-With its own drawn page (the `drawn-page` branch, which needs SDK 1.26:
+With its own drawn page (the `main` branch, which needs SDK 1.26:
 [merged](https://github.com/etcetc000/open-xy/pull/578) into Open-XY's `staging`
 and due in its next release), the marble glides
 to each note, trails its last moves and the halo swells, as in Halcyon Wander:
