@@ -316,6 +316,79 @@ void free_clock_is_halcyon_wanders_rate() {
     require(h.ons().size() == 5 && h.ons()[1].time == 240);
 }
 
+// Chance 100 %, no Jitter: a note on every step of the line, so the gaps are the Rate.
+static Host steady(u32 bpm_x10) {
+    Host h;
+    h.controls.bpm_x10 = bpm_x10;
+    h.set(1, 20, 21);
+    h.amount(7, 0.0);
+    return h;
+}
+static std::vector<u32> gaps_from(const Host& h, u32 from) {
+    std::vector<u32> out;
+    const std::vector<Event> on = h.ons();
+    for (size_t i = 1; i < on.size(); ++i) if (on[i].time >= from) out.push_back(on[i].time - on[i - 1].time);
+    return out;
+}
+
+void sync_rates_are_note_lengths() {
+    // 2/1 to 1/32 across the knob, in player steps (240 a quarter), at any tempo.
+    const u32 want[10] = {1920, 960, 480, 240, 160, 120, 80, 60, 40, 30};
+    for (u32 b = 0; b < 10; ++b) {
+        Host h = steady(b & 1 ? 900 : 1500);
+        h.set(2, b, 10);
+        h.press(60);
+        h.step(want[b] * 6 + 10);
+        const std::vector<u32> g = gaps_from(h, 0);
+        require(g.size() >= 5);
+        for (u32 x : g) require(x == want[b]);
+    }
+}
+
+void free_rate_is_seconds_at_any_tempo() {
+    // Rate's ends, 4 s and 62.5 ms, whatever the tempo; and across a tempo change.
+    const u32 tempos[3] = {600, 1200, 1800};
+    for (u32 t = 0; t < 3; ++t) {
+        const u32 per_second = tempos[t] * 4 / 10;   // player steps a second
+        for (u32 end = 0; end < 2; ++end) {
+            Host h = steady(tempos[t]);
+            h.clock_free(true);
+            h.amount(2, end);
+            h.press(60);
+            const u32 want = end ? per_second / 16 : per_second * 4;
+            h.step(want * 5 + 10);
+            const std::vector<u32> g = gaps_from(h, 0);
+            require(g.size() >= 4);
+            for (u32 x : g) require(x == want);
+        }
+    }
+    Host h = steady(1200);
+    h.clock_free(true);
+    h.amount(2, 0.5);                                // 0.5 s: 240 steps at 120 BPM
+    h.press(60);
+    h.step(2000);
+    h.controls.bpm_x10 = 600;
+    const u32 at = h.now;
+    h.step(3000);
+    const std::vector<u32> g = gaps_from(h, at);
+    require(g.size() >= 5);
+    for (size_t i = 1; i < g.size(); ++i) require(g[i] == 120);   // still 0.5 s
+}
+
+void rate_turned_up_waits_out_the_step_under_way() {
+    // As Halcyon Wander: the next step was set when the last sounded.
+    Host h = steady(1200);
+    h.clock_free(true);
+    h.amount(2, 0.0);
+    h.press(60);
+    h.step(100);
+    h.amount(2, 1.0);
+    h.step(3000);
+    const std::vector<Event> on = h.ons();
+    require(on.size() > 10 && on[1].time == 1920);
+    for (u32 x : gaps_from(h, 1921)) require(x == 30);
+}
+
 int main() {
     static_assert(sizeof(wp::State) <= player::state_bytes, "State fits the SDK's 2048 bytes");
     static_assert(alignof(wp::State) <= player::state_alignment, "State's alignment");
@@ -338,6 +411,9 @@ int main() {
     hold_off_stops_what_no_finger_holds();
     hold_eight_then_a_new_chord();
     free_clock_is_halcyon_wanders_rate();
+    sync_rates_are_note_lengths();
+    free_rate_is_seconds_at_any_tempo();
+    rate_turned_up_waits_out_the_step_under_way();
     std::printf("PASS (State %u bytes)\n", static_cast<unsigned>(sizeof(wp::State)));
     return 0;
 }
