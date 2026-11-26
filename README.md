@@ -17,8 +17,8 @@ On today's SDK (the `main` branch), the page is built from the player page's 24 
 
 [![Halcyon Player on the 24-dot page: the marble jumps from note to note](media/dot-page.gif)](media/dot-page.mp4)
 
-With its own drawn page (the `drawn-page` branch, which needs SDK 1.26, still a
-[pull request](https://github.com/etcetc000/open-xy/pull/578)), the marble glides
+With its own drawn page (the `drawn-page` branch, which needs SDK 1.26: merged into Open-XY's
+`staging` and due in its next release), the marble glides
 to each note, trails its last moves and the halo swells, as in Halcyon Wander:
 
 [![Halcyon Player's own drawn page: the marble glides between notes](media/drawn-page.gif)](media/drawn-page.mp4)
@@ -75,8 +75,9 @@ With a chord held, the orrery follows the first key. "hold" shows under it while
 Hold is on.
 
 The page needs a note player that draws its own screen, which the Open-XY SDK
-adds in 1.26 (a pull request on `staging`, not yet merged). Until then the
-`main` branch keeps the SDK 1.16 page made of the SDK's 24 dots.
+adds in 1.26 ([merged](https://github.com/etcetc000/open-xy/pull/578) into
+`staging`, not yet released). Until it is released the `main` branch keeps the
+SDK 1.16 page made of the SDK's 24 dots.
 
 ## What changed from Halcyon Wander
 
@@ -100,8 +101,8 @@ adds in 1.26 (a pull request on `staging`, not yet merged). Until then the
 ## Develop
 
 Keep the [Open-XY SDK](https://github.com/etcetc000/open-xy) beside this
-repository as `../open-xy`, on a branch with SDK 1.26 (a player's own drawn
-page) until that reaches `staging`, then:
+repository as `../open-xy`, on `staging` (SDK 1.26, a player's own drawn page),
+then:
 
 ```
 python ../open-xy/sdk.py test --machine .
