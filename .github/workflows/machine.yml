@@ -6,8 +6,9 @@ on:
 permissions:
   contents: read
 env:
-  # Development follows staging; pin a compatible SDK commit for a release.
-  OPEN_XY_REF: staging
+  # v1.0.0 is checked against this Open-XY staging commit (SDK 1.26); development
+  # follows staging again after the release.
+  OPEN_XY_REF: 319a3145ab7fe6784182ce3bee466fb9ab1cb5be
 jobs:
   machine:
     runs-on: ubuntu-latest
