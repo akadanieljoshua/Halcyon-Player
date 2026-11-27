@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "sdk": "1.27",
+  "sdk": "1.31",
   "kind": "player",
   "title": "Halcyon Player",
   "description": "Hold a key and your track's instrument wanders in a scale of its own, from the key you hold, after Mutable Instruments' Marbles."

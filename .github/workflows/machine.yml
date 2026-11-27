@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 env:
-  # This branch needs SDK 1.27 (a machine's builder title), still a pull request: check
+  # This branch needs SDK 1.31 (a machine's builder title), still a pull request: check
   # against its branch until it reaches staging, then return to etcetc000/open-xy on staging.
   OPEN_XY_REPOSITORY: akadanieljoshua/comet1
   OPEN_XY_REF: sdk/machine-title
